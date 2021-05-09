@@ -1,0 +1,205 @@
+body
+{
+	margin: 0;
+	padding: 0;
+}
+.index-corpse
+{
+	display: flex;
+	flex-direction: column;
+}
+/* EN-TÊTE */
+.site-header-content
+{
+	height: 125px;
+	display: flex;
+	flex-direction: row;
+	border-bottom: 2px solid black;
+	background-color: rgb(128,128,128);
+}
+.logo-gbaf-connected-container
+{
+	flex-grow: 1;
+}
+.logo-gbaf-connected-container img
+{
+	width: 100px;
+	height: 125px;
+}
+.nav-menu-header-container
+{
+	flex-grow: 1;
+}
+
+/* MENU DEROULANT */
+.nav-menu-header
+{
+	text-align: right;
+}
+.nav-menu-header li
+{
+	list-style-type: none;
+}
+.below
+{
+	display: none;
+}
+.nav-menu-header li:hover .below
+{
+	display: block;
+}
+.below a
+{
+	padding: 10px;
+}
+#nomprenomheader
+{
+	border: 1px solid red;
+	border-radius: 20px;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	top: 10px;
+	right: 5px;
+	background-color: red;
+}
+.dropdown a::after
+{
+	content:" ▼";
+	font-size: 12px;
+}
+
+
+/* GBAF SECTION */
+.gbaf-section-content
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 2px solid black;
+}
+.gbaf-title h1
+{
+	margin: 0;
+	padding: 0;
+}
+.gbaf-introduction
+{
+	text-align: center;
+}
+
+/* ACTORS SECTION */
+.actors-section-content
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.actors-title h2
+{
+	margin: 0;
+	padding: 0;
+}
+.actors-introduction
+{
+	text-align: center;
+}
+.actors-list
+{
+	border: 2px solid black;
+	padding: 15px;
+	background-color: rgb(128,128,128);
+}
+.actors-entry
+{
+	display: flex;
+	flex-direction: row;
+	border: 2px solid black;
+	padding: 10px;
+	align-items: center;
+	width: 700px;
+	background-color: rgb(192,192,192);
+}
+.picture-actors-list
+{
+	flex-grow: 1;
+}
+.title-content-actors-list
+{
+	flex-grow: 3;
+}
+.link-actors-next-page-list
+{
+	position: relative;
+	top: 50px;
+
+}
+.link-actors-next-page-list a
+{
+	border: 1px solid black;
+	border-radius: 20px;
+	color: black;
+	background-color: red;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-decoration: none;
+	font-style: italic;
+}
+.title-content-actors-list-inside
+{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+/* SITE FOOTER */
+.site-footer-content
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height : 100px;
+	background-color: rgb(128,128,128);
+	border-top: 2px solid black;
+}
+.nav-menu-footer ul li a
+{
+	color: black;
+}
+.nav-menu-footer ul li
+{
+	display: inline;
+	color: red;
+}
+.nav-menu-footer ul li::after
+{
+	content:" |";
+}
+
+/* PAGE CONNEXION */
+
+.connexion-corpse
+{
+	display: flex;
+	flex-direction: column;
+}
+.connexion-form-container
+{
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
