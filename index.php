@@ -12,6 +12,7 @@
         <meta charset="utf-8"/>
     	<title>Extranet GBAF</title>
     	<link rel="stylesheet" href="style.css"/>
+        <link rel="icon" href="img/favicon.ico"/>
         <meta name="viewport" content="width=device-width"/>
     </head>
     <body>
@@ -36,7 +37,7 @@
         				<p>
         					Le Groupement Banque-Assurance Français (GBAF) est une fédération représentant les 6 grands groupes français.<br />
         					Même s'il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même façon pour gérer près de 80 millions de comptes sur le territoire national.
-        					Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. C'est aussi un interlocuteur priviligié des pouvoirs publics.
+        					Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. C'est aussi un interlocuteur privilégié des pouvoirs publics.
         				</p>
                         <!-- bloc image gbaf -->
         				<img src="img/illustration_gbaf.png" alt="logo des banques fondatrices gbaf">
@@ -87,10 +88,10 @@
                                     </div>
                                     <a href="actors.php?acteur=<?php echo $donnees['id_acteur']; ?>">Lire la suite</a>
                                 </article>
-                                <?php
-                                    }
-                                    $req->closeCursor();
-                                ?>
+                        <?php
+                            }
+                            $req->closeCursor();
+                        ?>
         			</div>
         		</section>
             </div>

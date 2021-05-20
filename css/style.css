@@ -2,6 +2,19 @@ body
 {
 	margin: 0;
 	padding: 0;
+	font: 18px "Comic Sans", sans-serif;
+}
+h1
+{
+	font: 30px "Comic Sans", sans-serif;
+}
+h2
+{
+	font: 26px "Comic Sans", sans-serif;
+}
+h3
+{
+	font: 22px "Comic Sans", sans-serif;
 }
 
 /* EN-TÊTE */
@@ -13,6 +26,7 @@ body
 	flex-direction: row;
 	border-bottom: 2px solid black;
 	background-color: rgb(128,128,128);
+	justify-content: center;
 }
 .logo-gbaf-connected-container
 {
@@ -26,6 +40,11 @@ body
 .nav-menu-header-container
 {
 	width: 50%;
+}
+.logo-gbaf-disconnected
+{
+	width : 105px;
+	height: 125px;
 }
 
 /* menu deroulant en-tete */
@@ -109,8 +128,8 @@ body
 #gbaf-section-content p
 {
 	text-align: center;
-	padding-left: auto;
-	padding-right: auto;
+	margin-left: 60px;
+	margin-right: 60px;
 }
 
 /* acteurs section */
@@ -137,6 +156,7 @@ body
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 50px;
 }
 .actors-entry
 {
@@ -160,11 +180,17 @@ body
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+.actors-entry-content p
+{
+	font-size: 18px;
+}
 .actors-entry a
 {
 	position: relative;
-	top: 86px;
+	top: 92px;
 	width: 15%;
+	font-size: 16px;
+	text-align: right;
 }
 .link-actors-next-page-list a
 {
@@ -186,16 +212,147 @@ body
 
 /* PAGE CONNEXION */
 
-.connexion-corpse
+#connexion-form-container
 {
 	display: flex;
 	flex-direction: column;
-}
-.connexion-form-container
-{
+	width: 40%;
 	align-items: center;
-	justify-content: center;
-	height: 300px;
+	margin: 30px auto 30px auto;
+	border: 15px solid rgba(255,0,0,0.7);
+}
+#connexion-form-container h1
+{
+	background-color: rgba(26,26,26,0.9);
+	color: white;
+	height: 50px;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0px;
+	padding-top: 12px;
+	padding-bottom: 0px;
+}
+#connexion-form
+{
+	width: 55%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+#connexion-username, #connexion-password
+{
+	height: 35px;
+	width: 80%;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 15px;
+	margin-top: 5px;
+	font-size: 14px;
+	background-color: rgb(244,244,244);
+}
+#connexion-button
+{
+	width: 100%;
+	height: 35px;
+	background-color: rgba(255,0,0,0.7);
+	border: 1px solid black;
+	color: white;
+	font-size: 16px;
+	text-transform: uppercase;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+#connexion-form-container a
+{
+	font-size: 16px;
+}
+#connexion-form p
+{
+	color: red;
+	margin-bottom: 10px;
+	text-align: center;
+	margin-top : 0px;
+}
+
+/* PAGE INSCRIPTION */
+#register-form-container
+{
+	display: flex;
+	flex-direction: column;
+	width: 45%;
+	align-items: center;
+	margin: 30px auto 30px auto;
+	border: 15px solid rgba(255,0,0,0.7);
+}
+#register-form-container h1
+{
+	background-color: rgba(26,26,26,0.9);
+	color: white;
+	height: 50px;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0px;
+	padding-top: 12px;
+	padding-bottom: 0px;
+}
+#register-form
+{
+	width: 55%;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#register-nom, #register-prenom, #register-username, #register-password, #register-secretanswer
+{
+	height: 35px;
+	width: 80%;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 14px;
+	background-color: rgb(244,244,244);
+}
+#register-secretquestion
+{
+	height: 35px;
+	width: 87%;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	background-color: rgb(244,244,244);
+}
+#register-button
+{
+	width: 100%;
+	height: 35px;
+	background-color: rgba(255,0,0,0.7);
+	border: 1px solid black;
+	color: white;
+	font-size: 16px;
+	font-stretch: expanded;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+#register-form p
+{
+	margin: 0px 0px 10px 0px;
+}
+.error-register
+{
+	color: red;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+.requirement-register-form
+{
+	font-size: 14px;
+	color: rgb(128,128,128);
 }
 
 

@@ -1,8 +1,7 @@
 <?php
-    session_start();
-    if($_SESSION['loggedIn'] = true)
+    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
         {
-           ?> 
+?> 
 			<div class="logo-gbaf-connected-container">
 				<a href="index.php"><img src="img/logo_gbaf.png" alt="logo gbaf"></a>	
 			</div>
@@ -11,7 +10,7 @@
 					<li class="dropdown"><a id="nomprenomheader"><?php echo $_SESSION['nom']," ", $_SESSION['prenom']; ?></a>
 						<ul class="submenu">
 							<li><a href="lien-gestion-compte">Gestion du compte</a></li>
-							<li><a href="lien-deconnexion">Déconnexion</a></li>
+							<li><a href="disconnect.php">Déconnexion</a></li>
 						</ul>
 					</li>
 				</nav>		
@@ -21,7 +20,7 @@
 	else
 		{
 			?>
-			<a class="logo-gbaf-disconnected" href="index.php"><img class="logo-gbaf-disconnected" src="img/logo_gbaf.png" alt="logo gbaf"></a>
+			<a class="logo-gbaf-disconnected-container" href="index.php"><img class="logo-gbaf-disconnected" src="img/logo_gbaf.png" alt="logo gbaf"></a>
 			<?php
 		}
 			?>

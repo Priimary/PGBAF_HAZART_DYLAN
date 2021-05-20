@@ -1,15 +1,18 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
     	<title>Extranet GBAF</title>
     	<link rel="stylesheet" href="style.css" />
+    	<link rel="icon" href="img/favicon.ico"/>
+    	<meta name="viewport" content="width=device-width" />
     </head>
 	<body>
-		<!-- si déjà connecté redirige vers accueil.php -->
-		<!-- sinon affiche le contenu de connexion.php -->
 		<!-- page entière -->
-		<div class="connexion-corpse">
+		<div id="connexion-corpse">
 			<!-- insertion de l'en-tête -->
 			<header class="site-header-container">
 				<div class="site-header-content"><?php include 'header.php'; ?></div>
@@ -17,29 +20,44 @@
 			<!-- contenu de la page entre en-tête et pied de page -->
 			<div class="connexion-content">
 				<!-- section formulaire de connexion -->
-				<section class="connexion-form-container">
+				<section id="connexion-form-container">
 					<!-- titre pour formulaire -->
-					<div class="connexion-h1">
-						<h1>Connexion</h1>
-					</div>
-
+					<h1>
+						Connexion
+					</h1>
 					<!-- formulaire de connexion -->
-					<div class="connexion-form-content">
-						<form class="connexion-form" method="post" action="connexion-script.php">
-							<label for="pseudo">Votre pseudo</label> : <input type="text" name="pseudo" id="pseudo" required size="30" maxlenght="30" /><br />
-							<label for="password">Votre mot de passe</label> : <input type="password" name="password" id="password" required size="30" maxlenght="30" /><br />
-							<input type="submit" value="Confirmer"/><br />
-						</form>
-					</div>
+					<form id="connexion-form" method="post" action="connexion-script.php">
+						<?php
+						// message d'erreur de connexion
+                    	if(isset($_SESSION['error']))
+                    	{
+                        	$error = $_SESSION['error'];
+                        	echo "<p>$error</p>";                    	
+                        }
+                		?>
+						<label for="connexion-username">Nom d'utilisateur</label>
+						<br />
+						<input type="text" name="connexion-username" id="connexion-username" required size="33" maxlenght="30" />
+						<br />
+						<label for="connexion-password">Mot de passe</label>
+						<br />
+						<input type="password" name="connexion-password" id="connexion-password" required size="33" maxlenght="30" />
+						<br />
+						<input id="connexion-button" type="submit" value="Se connecter"/>
+						<br />
+					</form>
 					<!-- mot de passe oublié & inscription -->
-					<a href="inscription.php">Vous n'avez pas encore de compte ? Inscrivez vous !</a><br />
+					<a href="register.php">Vous n'avez pas encore de compte ? Inscrivez vous !</a><br />
 					<a href="passwordlost.php">Mot de passe oublié ?</a>
 				</section>
 			</div>
-			<!-- insertion pied de base -->
+			<!-- insertion pied de page -->
 			<footer class="site-footer-container">
 				<div class="site-footer-content"><?php include 'footer.php'; ?></div>
 			</footer>
 		</div>
     </body>
 </html>
+<?php
+    unset($_SESSION['error']);
+?>
