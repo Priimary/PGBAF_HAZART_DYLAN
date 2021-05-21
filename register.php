@@ -14,7 +14,7 @@ session_start();
 		<!-- si déjà connecté redirige vers accueil.php -->
 		<!-- sinon affiche le contenu de register.php -->
 		<!-- page entière -->
-		<div id="register-corpse">
+		<div id="register-container">
 			<!-- insertion de l'en-tête -->
 			<header class="site-header-container">
 				<div class="site-header-content"><?php include 'header.php'; ?></div>

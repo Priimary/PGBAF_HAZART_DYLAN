@@ -1,14 +1,14 @@
 <?php 
-	session_start();
-	// Connexion bdd
-	try
-	{
-		$bdd = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
-	}
-	catch(Exception $e)
-	{
-		die('Erreur : '.$e->getMessage());
-	}
+session_start();
+// Connexion bdd
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
+}
+catch(Exception $e)
+{
+	die('Erreur : '.$e->getMessage());
+}
 
 // variables messages d'erreurs
 $errornom = "Mauvais format, respectez la condition au-dessus";
@@ -133,7 +133,7 @@ else
     exit();
 }
 
-// Vérification si username pas déjà dispo en database si prérequis du formulaire rempli
+// Vérification si username pas déjà dispo en database si prérequis du formulaire rempli, si non dispo inscris l'utilisateur dans la bdd
 if (isset($prenom, $nom, $username, $password, $secretquestion, $secretanswer))
 {
 	$req = $bdd->prepare('SELECT nom, prenom, username FROM account WHERE username = :username');

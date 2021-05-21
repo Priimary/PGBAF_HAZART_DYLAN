@@ -12,7 +12,7 @@ session_start();
     </head>
 	<body>
 		<!-- page entière -->
-		<div id="connexion-corpse">
+		<div id="connexion-container">
 			<!-- insertion de l'en-tête -->
 			<header class="site-header-container">
 				<div class="site-header-content"><?php include 'header.php'; ?></div>
@@ -22,9 +22,7 @@ session_start();
 				<!-- section formulaire de connexion -->
 				<section id="connexion-form-container">
 					<!-- titre pour formulaire -->
-					<h1>
-						Connexion
-					</h1>
+					<h1>Connexion</h1>
 					<!-- formulaire de connexion -->
 					<form id="connexion-form" method="post" action="connexion-script.php">
 						<?php

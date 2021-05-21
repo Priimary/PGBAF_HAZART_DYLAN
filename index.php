@@ -1,10 +1,10 @@
 <?php
-    session_start();
-    if($_SESSION['loggedIn'] != true)
-        {
-            header('Location: connexion.php');
-            exit;
-        }
+session_start();
+if($_SESSION['loggedIn'] != true)
+{
+    header('Location: connexion.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
