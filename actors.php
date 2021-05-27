@@ -20,6 +20,7 @@
     	<header class="site-header-container">
 			<div class="site-header-content"><?php include 'header.php'; ?></div>
 		</header>
+
     	<?php
 		// Connexion bdd
 		try
@@ -28,89 +29,92 @@
 		}
 		catch(Exception $e)
 		{
-		        die('Erreur : '.$e->getMessage());
+		    die('Erreur : '.$e->getMessage());
 		}
-
+		// mise en variable
+		$id_acteur = $_GET['acteur'];
 		// récupération informations acteur grace id_acteur de l'url
 		$req = $bdd->prepare('SELECT id_acteur, acteur, description, logo FROM acteur WHERE id_acteur = ?');
-		$req->execute(array($_GET['acteur']));
+		$req->execute(array($id_acteur));
 		$donnees = $req->fetch();
-		//	page d'erreur si tentative d'accès à un autre id
+		// page d'erreur si tentative d'accès à un id eronné
 		if (empty($donnees) == true)
 		{
 		    echo 'Cette page n\'existe pas.';
 		    exit(); 
 		}
-		// sinon fin balise php pour commencer structure html
 		?>
 		<!-- section complète acteur -->
-		<section class="actor-container">
-			<div class="actor-content">
+		<section class="actor-section-container">
+			<article class="actor-content">
 				<!-- bloc image acteur -->
-				<div class="actor-picture">
-					<img src="<?php echo htmlspecialchars($donnees['logo']); ?>" alt="Image de présentation de l'acteur"><br />
-				</div>
+				<img src="img/<?php echo htmlspecialchars($donnees['logo']); ?>" alt="Image de présentation de l'acteur"><br />
 				<!-- bloc titre acteur -->
-				<div class="actor-title">
-				    <h2>
-				        <?php echo htmlspecialchars($donnees['acteur']); ?><br />
-				    </h2>
-			    </div>
+				<h2>
+				    <?php echo htmlspecialchars($donnees['acteur']); ?>
+				</h2>
 			    <!-- bloc description acteur -->
-			    <div class="actor-introduction">
-				    <p>
-					    <?php echo nl2br(htmlspecialchars($donnees['description'])); ?>
-				    </p>
-				</div>
-			</div>
+				<p>
+					<?php echo nl2br(htmlspecialchars($donnees['description'])); ?>
+				</p>
+			</article>
 		</section>
 		<!-- section complète commentaires -->
-		<section class="post-list-container">
-			<div class="post-list-content">
-				<!-- bloc titre liste commentaires -->
-				<div class="post-list-title">
-					<h3>Commentaires</h3>
-				</div>
-				<!-- bloc bouton nouveau commentaire -->
-				<div class="button-new-post">
-					<a href="#">Nouveau commentaire</a>
-				</div>
-				<!-- bloc formulaire nouveau commentaire caché de base, affiché sur appuie sur bouton -->
-				<div class="new-post">
-					<form class="form-add-post" method="post" action="add_post.php">
-						<input type="hidden" name="id_user" id="id_user" value="<?php echo htmlspecialchars($_SESSION['id_user']) ?>"/>
-						<input type="hidden" name="id_acteur" id="id_acteur" value="<?php echo $_GET['acteur'] ?>"/>
-						<label for="commentaire">Commentaire</label> : <input type="text" name="commentaire" id="commentaire" required size="30" maxlenght="30"/>
-						<input type="submit" value="Envoyer"/><br />
-					</form>
-				</div>
-				<!-- bloc like/dislike -->
+		<section id="post-list-container">
+			<article id="post-list-content">
+				<!-- titre liste commentaires -->
+				<h3>Commentaires</h3>
+				<!-- erreur commentaire -->
+				<?php
+				// message d'erreur de format
+				if(isset($_SESSION['errorpost']))
+				{
+					$errorpost = $_SESSION['errorpost'];
+					echo "<p><span class='errorpost'>$errorpost</span></p>";
+				}
+				?>
+				<!-- bouton nouveau commentaire -->
+				<a href="#">Nouveau commentaire</a>
+				<!-- formulaire nouveau commentaire caché de base, affiché sur appuie bouton -->
+				<form id="form-add-post" method="post" action="add_post.php?acteur=<?php echo $id_acteur; ?>">
+					<label for="commentaire">Commentaire</label>
+					<br />
+					<input type="text" name="commentaire" id="commentaire" required size="30" maxlenght="30"/>
+					<input type="submit" value="Envoyer"/>
+				</form>
 
 				<?php
 				$req->closeCursor(); // fin requête précédente
+				?>
+				<div id="likesystem-container">
+					<?php include 'likesystem.php'; ?>
+				</div>
 
+				<?php
 				// Récupération des commentaires
 				$req = $bdd->prepare('SELECT a.prenom prénom, p.post post, DATE_FORMAT(p.date_add, \'%d/%m/%Y à %Hh%imin%ss\') date_commentaire FROM post p INNER JOIN account a ON p.id_user = a.id_user  WHERE id_acteur = ?  ORDER BY date_add');
-				$req->execute(array($_GET['acteur']));
+				$req->execute(array($id_acteur));
 				while ($donnees = $req->fetch())
 				{
 				// fin balise php pour commencer structure html
 				?>
-				<!-- bloc pour chaque commentaire -->
-				<div class="post-content">
+					<!-- affichage de chaque commentaire disponible -->
 					<p><strong><?php echo htmlspecialchars($donnees['prénom']); ?></strong> le <?php echo $donnees['date_commentaire']; ?></p><br/>
 					<p><?php echo nl2br(htmlspecialchars($donnees['post'])); ?></p>
-				</div>
-				<!-- fin boucle commentaire -->
+					<!-- fin boucle commentaire -->
 				<?php
 				}
 				$req->closeCursor();
 				?>
-			</div>
+			</article>
 		</section>
-	<!-- insertion pied de page -->
+		<!-- insertion pied de page -->
 		<footer class="site-footer-container">
 			<div class="site-footer-content"><?php include 'footer.php'; ?></div>
 		</footer>
 	</body>
 </html>
+<?php
+// supprime contenu variable session erreur pour empêcehr le message de rester indéfiniment
+unset($_SESSION['errorpost']);
+?>

@@ -162,6 +162,8 @@ if (isset($prenom, $nom, $username, $password, $secretquestion, $secretanswer))
 	}
 	if($ins)
 	{
+        $registerdone = "Vous avez bien réussi à créer votre compte !";
+        $_SESSION['registerdone'] = $registerdone;
 		header('Location: connexion.php');
 		exit();
 	}

@@ -1,6 +1,6 @@
 <nav class="nav-menu-footer">
 	<ul>
-		<li><a href="mentions-legales.php">Mentions Légales</a></li>
-		<li><a href="contact.php">Contact</a></li>
+		<li><a href="#">Mentions Légales</a></li>
+		<li><a href="mailto:dylan.hazart@gmail.com">Contact</a></li>
 	</ul>
 </nav>

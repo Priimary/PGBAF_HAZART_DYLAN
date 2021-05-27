@@ -23,6 +23,13 @@ session_start();
 				<section id="connexion-form-container">
 					<!-- titre pour formulaire -->
 					<h1>Connexion</h1>
+					<!-- message reussite connexion -->
+					<?php
+					if(isset($_SESSION['registerdone']))
+					{
+						$registerdone = $_SESSION['registerdone'];
+						echo "<p>$registerdone</p>";					}
+					?>
 					<!-- formulaire de connexion -->
 					<form id="connexion-form" method="post" action="connexion-script.php">
 						<?php

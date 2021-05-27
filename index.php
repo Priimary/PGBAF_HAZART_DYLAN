@@ -27,7 +27,7 @@ if($_SESSION['loggedIn'] != true)
 
                 <!-- SECTION GBAF -->
                 <section id="gbaf-section-container">
-                    <!-- bloc contenu gbaf -->
+                    <!-- article contenu gbaf -->
         			<article id="gbaf-section-content">
                         <!--titre gbaf -->
         				<h1>
@@ -39,7 +39,7 @@ if($_SESSION['loggedIn'] != true)
         					Même s'il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même façon pour gérer près de 80 millions de comptes sur le territoire national.
         					Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. C'est aussi un interlocuteur privilégié des pouvoirs publics.
         				</p>
-                        <!-- bloc image gbaf -->
+                        <!-- image gbaf -->
         				<img src="img/illustration_gbaf.png" alt="logo des banques fondatrices gbaf">
         			</article>
                 </section>

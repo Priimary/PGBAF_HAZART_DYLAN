@@ -435,7 +435,27 @@ h3
 	color: rgb(128,128,128);
 }
 
-
+/* PAGE ACTEUR */
+/* section acteur */
+.actor-content
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.actor-content h2
+{
+	margin: 5px 0px 0px 0px;
+}
+.actor-content p
+{
+	text-align: center;
+}
+.actor-content img
+{
+	height: 150px;
+	width: 300px;
+}
 
 
 
