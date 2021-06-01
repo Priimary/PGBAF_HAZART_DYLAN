@@ -13,6 +13,7 @@ catch(Exception $e)
 $errorpasswordlost = "Informations invalides";
 $errorpasswordlost_password = "Mauvais format, respectez la condition au-dessus";
 $errorpasswordlost_password2 = "Les deux champs ne sont pas identiques";
+$errorpasswordused = "Veuillez définir un nouveau mot de passe différent du précédent";
 
 // si données reçues depuis le champ password & variable session créée après avoir vérifié les données du formulaire
 if (isset($_POST['passwordlost-password'], $_POST['passwordlost-password2'], $_SESSION['passwordlost-username']) 
@@ -22,15 +23,29 @@ if (isset($_POST['passwordlost-password'], $_POST['passwordlost-password2'], $_S
 
     if (preg_match("#^(?=.{8,30}$)(?![-_*.])(?!.*[-_*.]{2})[a-zA-Z0-9-_*.]+$#", $_POST['passwordlost-password']))
     {
-        $password = password_hash($_POST['passwordlost-password'], PASSWORD_DEFAULT);
-        $upd = $bdd->prepare('UPDATE account SET password = :password WHERE username = :username');
-        $upd->execute(array(
-        	'password' => $password,
-        	'username' => $_SESSION['passwordlost-username']));
-        $upd->closeCursor();
-        unset($_SESSION['passwordlost-username']);
-        header('Location: connexion.php');
-        exit();
+        $req = $bdd->prepare('SELECT password FROM account WHERE username = :username');
+		$req->execute(array('username' => $_SESSION['passwordlost-username']));
+		$result = $req->fetch();
+		$isPasswordUsed = password_verify($_POST['passwordlost-password'], $result['password']);
+		if(isset($isPasswordUsed) && $isPasswordUsed)
+		{
+			$_SESSION['errorpasswordused'] = $errorpasswordused;
+			header('Location: passwordlost.php');
+			exit();
+		}
+		else
+		{
+			$req->closeCursor();
+			$password = password_hash($_POST['passwordlost-password'], PASSWORD_DEFAULT);
+	        $upd = $bdd->prepare('UPDATE account SET password = :password WHERE username = :username');
+	        $upd->execute(array(
+	        	'password' => $password,
+	        	'username' => $_SESSION['passwordlost-username']));
+	        $upd->closeCursor();
+	        unset($_SESSION['passwordlost-username']);
+	        header('Location: connexion.php');
+	        exit();
+	    }
     }
     else
     {

@@ -457,6 +457,26 @@ h3
 	width: 300px;
 }
 
+/* PAGE GESTION DE COMPTE */
+#account-form-nom, #account-form-prenom, #account-form-username, #account-form-password, #account-form-secretquestion, #account-form-secretanswer
+{
+	display: inline-flex;
+}
+#account-content img
+{
+	height: 20px;
+	width:  20px;
+}
+#account-content button
+{
+	background-color: white;
+	border: none;
+}
+.account-info
+{
+	margin-left: 15px;
+}
+
 
 
 

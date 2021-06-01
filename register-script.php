@@ -24,7 +24,7 @@ if (isset($_POST['register-nom']))
 {
     $_POST['register-nom'] = htmlspecialchars($_POST['register-nom']);
 
-    if (preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,})#", $_POST['register-nom']))
+    if (preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['register-nom']))
     {
         $nom = $_POST['register-nom'];
     }
@@ -43,7 +43,7 @@ if (isset($_POST['register-prenom']))
 {
     $_POST['register-prenom'] = htmlspecialchars($_POST['register-prenom']);
 
-    if (preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,})#", $_POST['register-prenom']))
+    if (preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['register-prenom']))
     {
         $prenom = $_POST['register-prenom'];
     }
@@ -76,7 +76,7 @@ else
     $_SESSION['errorusername'] = $errorusername;
 }
 
-/* vérification password, doit contenir entre 5 et 20 caractères, commencant par une lettre ou un chiffre obligatoirement, puis peut utiliser lettres/chiffres, caractères spéciaux, mais ne peux pas utiliser deux caractères spéciaux à la suite */
+/* vérification password, doit contenir entre 8 et 30 caractères, commencant par une lettre ou un chiffre obligatoirement, puis peut utiliser lettres/chiffres, caractères spéciaux, mais ne peux pas utiliser deux caractères spéciaux à la suite */
 if (isset($_POST['register-password']))
 {
     $_POST['register-password'] = htmlspecialchars($_POST['register-password']);
@@ -115,7 +115,7 @@ if (isset($_POST['register-secretanswer']))
 {
     $_POST['register-secretanswer'] = htmlspecialchars($_POST['register-secretanswer']);
 
-    if (preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,})#", $_POST['register-secretanswer']))
+    if(preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['register-secretanswer']))
     {
         $secretanswer = $_POST['register-secretanswer'];
     }

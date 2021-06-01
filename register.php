@@ -106,7 +106,7 @@ session_start();
 						// message d'erreur de connexion
 		                    if(isset($_SESSION['errorsecretquestion']))
 		                    {
-		                        $errorpassword = $_SESSION['errorsecretquestion'];
+		                        $errorsecretquestion = $_SESSION['errorsecretquestion'];
 		                        echo "<p><span class='error-register'>$errorsecretquestion</span></p>";                    	
 		                    }
 	                	?>

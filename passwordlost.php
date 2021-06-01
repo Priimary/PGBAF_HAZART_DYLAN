@@ -28,7 +28,13 @@ session_start();
 						<?php
 						if(isset($_SESSION['passwordlost-username']))
 						{
-						?>
+							// message d'erreur si mot de passe identique à celui de la bdd
+		                    if(isset($_SESSION['errorpasswordused']))
+		                    {
+		                        $errorpasswordused = $_SESSION['errorpasswordused'];
+		                        echo "<p><span class='error-passwordlost'>$errorpasswordused</span></p>";                    	
+		                    }
+	                	?>
 							<label for="passwordlost-password">Nouveau mot de passe</label>
 							<br />
 							<input type="password" name="passwordlost-password" id="passwordlost-password" required size="30" minlenght="8" maxlenght="30" />
@@ -129,4 +135,5 @@ session_start();
     unset($_SESSION['errorpasswordlost']);
     unset($_SESSION['errorpasswordlost-password']);
     unset($_SESSION['errorpasswordlost-password2']);
+    unset($_SESSION['errorpasswordused']);
 ?>

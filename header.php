@@ -9,7 +9,7 @@
 				<nav class="nav-menu-header">
 					<li class="dropdown"><a id="nomprenomheader"><?php echo $_SESSION['nom']," ", $_SESSION['prenom']; ?></a>
 						<ul class="submenu">
-							<li><a href="lien-gestion-compte">Gestion du compte</a></li>
+							<li><a href="account.php">Gestion du compte</a></li>
 							<li><a href="disconnect.php">Déconnexion</a></li>
 						</ul>
 					</li>
