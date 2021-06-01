@@ -3,9 +3,9 @@
 function getLikes($id_acteur)
 {
 	global $bdd;
-	$req = $bdd->prepare('SELECT COUNT(vote) FROM vote WHERE id_acteur = :idacteur AND vote = :vote');
+	$req = $bdd->prepare('SELECT COUNT(vote) FROM vote WHERE id_acteur = :id_acteur AND vote = :vote');
 	$req->execute(array(
-		'idacteur' => $id_acteur,
+		'id_acteur' => $id_acteur,
 		'vote' => 'like'));
 	$likeNbr = $req->fetchColumn();
 	return $likeNbr;
@@ -27,10 +27,9 @@ function getDislikes($id_acteur)
 function userLiked($id_acteur)
 {
 	global $bdd;
-	global $id_user;
 	$req = $bdd->prepare ('SELECT * FROM vote WHERE id_user = :id_user AND id_acteur = :id_acteur AND vote = :vote');
 	$req->execute(array(
-		'id_user' => $id_user,
+		'id_user' => $_SESSION['id_user'],
 		'id_acteur' => $id_acteur,
 		'vote' => 'like'));
 	$result = $req->fetch();
@@ -47,10 +46,9 @@ function userLiked($id_acteur)
 function userDisliked($id_acteur)
 {
 	global $bdd;
-	global $id_user;
 	$req = $bdd->prepare ('SELECT * FROM vote WHERE id_user = :id_user AND id_acteur = :id_acteur AND vote = :vote');
 	$req->execute(array(
-		'id_user' => $id_user,
+		'id_user' => $_SESSION['id_user'],
 		'id_acteur' => $id_acteur,
 		'vote' => 'dislike'));
 	$result = $req->fetch();

@@ -11,35 +11,41 @@ session_start();
     	<meta name="viewport" content="width=device-width" />
     </head>
 	<body>
-		<!-- page entière -->
+		<!-- Bloc page entière -->
 		<div id="connexion-container">
-			<!-- insertion de l'en-tête -->
+			<!-- Insertion de l'en-tête -->
 			<header class="site-header-container">
 				<div class="site-header-content"><?php include 'header.php'; ?></div>
 			</header>
-			<!-- contenu de la page entre en-tête et pied de page -->
+			<!-- Bloc contenu de la page entre en-tête et pied de page -->
 			<div class="connexion-content">
-				<!-- section formulaire de connexion -->
+				<!-- Section formulaire de connexion -->
 				<section id="connexion-form-container">
-					<!-- titre pour formulaire -->
+					<!-- Titre pour formulaire -->
 					<h1>Connexion</h1>
-					<!-- message reussite connexion -->
+
+					<!-- Message réussite connexion -->
 					<?php
 					if(isset($_SESSION['registerdone']))
 					{
 						$registerdone = $_SESSION['registerdone'];
-						echo "<p>$registerdone</p>";					}
+						echo "<p>$registerdone</p>";					
+					}
 					?>
-					<!-- formulaire de connexion -->
+
+					<!-- Formulaire de connexion -->
 					<form id="connexion-form" method="post" action="connexion-script.php">
+
+						<!-- Message d'erreur de connexion -->
 						<?php
-						// message d'erreur de connexion
-                    	if(isset($_SESSION['error']))
+                    	if(isset($_SESSION['errorConnexion']))
                     	{
-                        	$error = $_SESSION['error'];
-                        	echo "<p>$error</p>";                    	
+                        	$errorConnexion = $_SESSION['errorConnexion'];
+                        	echo "<p>$errorConnexion</p>";                    	
                         }
                 		?>
+
+                		<!-- Champs nom d'utilisateur et mdp -->
 						<label for="connexion-username">Nom d'utilisateur</label>
 						<br />
 						<input type="text" name="connexion-username" id="connexion-username" required size="33" maxlenght="30" />
@@ -48,15 +54,18 @@ session_start();
 						<br />
 						<input type="password" name="connexion-password" id="connexion-password" required size="33" maxlenght="30" />
 						<br />
+
+						<!-- Bouton de connexion -->
 						<input id="connexion-button" type="submit" value="Se connecter"/>
-						<br />
 					</form>
-					<!-- mot de passe oublié & inscription -->
+
+					<!-- Lien vers page mot de passe oublié & inscription -->
 					<a href="register.php">Vous n'avez pas encore de compte ? Inscrivez vous !</a><br />
 					<a href="passwordlost.php">Mot de passe oublié ?</a>
+
 				</section>
 			</div>
-			<!-- insertion pied de page -->
+			<!-- Insertion pied de page -->
 			<footer class="site-footer-container">
 				<div class="site-footer-content"><?php include 'footer.php'; ?></div>
 			</footer>
@@ -64,5 +73,5 @@ session_start();
     </body>
 </html>
 <?php
-    unset($_SESSION['error']);
+    unset($_SESSION['errorConnexion']);
 ?>

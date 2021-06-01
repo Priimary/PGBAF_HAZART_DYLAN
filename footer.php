@@ -1,3 +1,4 @@
+<!-- Menu footer -->
 <nav class="nav-menu-footer">
 	<ul>
 		<li><a href="#">Mentions Légales</a></li>

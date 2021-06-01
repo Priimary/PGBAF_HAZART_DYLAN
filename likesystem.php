@@ -1,12 +1,7 @@
 <?php
-// insertion fichier fonctions
+// Insertion fichier fonctions
 include 'likefunction.php';
-// mise en variable
-$id_user = $_SESSION['id_user'];
-?>
 
-
-<?php
 // si l'utilisateur aime déjà le contenu, affiche le nombre de votes et met en couleur le pouce du j'aime sans mettre de formulaire pour bloquer le vote
 if(userLiked($id_acteur))
 {

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// Connexion bdd
+// Connexion BDD
 try
 {
     $bdd = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
@@ -9,21 +9,22 @@ catch(Exception $e)
 {
     die('Erreur : '.$e->getMessage());
 }
-// Récupération de l'utilisateur et de son pass hashé
+// Variable message d'erreur
+$errorConnexion = "Identifiant/mot de passe incorrect";
+
+// Récupération de des données de l'utilisateur
 $req = $bdd->prepare('SELECT id_user, nom, prenom, username, password, question FROM account WHERE username = :username');
 $req->execute(array(
     'username' => $_POST['connexion-username']));
 $resultat = $req->fetch();
 
-// Comparaison du pass envoyé via le formulaire avec la base
+// Comparaison du pass envoyé via le formulaire avec le mdp de la BDD
 $isPasswordCorrect = password_verify($_POST['connexion-password'], $resultat['password']);
-// message d'erreur de connexion
-$error = "Identifiant/mot de passe incorrect";
 
-// Si le pseudo et/ou mdp incorrect, affiche un message d'erreur, sinon créé variable de session et renvoie sur l'index
+// Si le pseudo et/ou mdp incorrect, affiche un message d'erreur, sinon connecte l'utilisateur, créé variable de session et renvoie sur l'index
 if (!$resultat)
 {
-    $_SESSION['error'] = $error;
+    $_SESSION['errorConnexion'] = $errorConnexion;
     header('Location: connexion.php');
     exit();
 }
@@ -42,7 +43,7 @@ else
     }
     else 
     {
-        $_SESSION['error'] = $error;
+        $_SESSION['errorConnexion'] = $errorConnexion;
         header('Location: connexion.php');
         exit();
     }

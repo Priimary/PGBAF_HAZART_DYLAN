@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// Connexion bdd
+// Connexion BDD
 try
 {
 	$bdd = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
@@ -10,7 +10,7 @@ catch(Exception $e)
 	die('Erreur : '.$e->getMessage());
 }
 
-// variables messages d'erreurs
+// Mise en variable message d'erreurs
 $errornom = "Mauvais format, respectez la condition au-dessus";
 $errorprenom = "Mauvais format, respectez la condition au-dessus";
 $errorusername = "Mauvais format, respectez la condition au-dessus";
@@ -20,11 +20,11 @@ $errorsecretanswer = "Mauvais format, respectez la condition au-dessus";
 $usernametaken = "Nom d'utilisateur déjà pris";
 
 // Vérification nom, doit contenir entre 2 et 20 caractères, commencant par minimum 2 lettres, avec possibilitée d'avoir apostrophe ou tiret-d'union puis suite nom
-if (isset($_POST['register-nom']))
+if(isset($_POST['register-nom']))
 {
     $_POST['register-nom'] = htmlspecialchars($_POST['register-nom']);
 
-    if (preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['register-nom']))
+    if(preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['register-nom']))
     {
         $nom = $_POST['register-nom'];
     }
@@ -38,12 +38,12 @@ else
     $_SESSION['errornom'] = $errornom;
 }
 
-// vérification prénom, doit contenir entre 2 et 20 caractères, commencant par minimum 2 lettres, avec possibilitée d'avoir apostrophe ou tiret-d'union puis suite prénom
-if (isset($_POST['register-prenom']))
+// Vérification prénom, doit contenir entre 2 et 20 caractères, commencant par minimum 2 lettres, avec possibilitée d'avoir apostrophe ou tiret-d'union puis suite prénom
+if(isset($_POST['register-prenom']))
 {
     $_POST['register-prenom'] = htmlspecialchars($_POST['register-prenom']);
 
-    if (preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['register-prenom']))
+    if(preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['register-prenom']))
     {
         $prenom = $_POST['register-prenom'];
     }
@@ -57,12 +57,12 @@ else
     $_SESSION['errorprenom'] = $errorprenom;
 }
 
-/* vérification username, doit contenir entre 5 et 20 cacatères, commencant par une lettre obligatoirement, puis peut utiliser lettres/chiffres/tiret et underscore, mais ne peux pas utiliser deux underscore ou tiret à la suite */
-if (isset($_POST['register-username']))
+/* Vérification username, doit contenir entre 5 et 20 cacatères, commencant par une lettre obligatoirement, puis peut utiliser lettres/chiffres/tiret et underscore, mais ne peux pas utiliser deux underscore ou tiret à la suite */
+if(isset($_POST['register-username']))
 {
     $_POST['register-username'] = htmlspecialchars($_POST['register-username']);
 
-    if (preg_match("#^(?=.{5,20}$)(?![_-])(?!.*[-_]{2})[a-zA-Z0-9_-]+$#", $_POST['register-username']))
+    if(preg_match("#^(?=.{5,20}$)(?![_-])(?!.*[-_]{2})[a-zA-Z0-9_-]+$#", $_POST['register-username']))
     {
         $username = $_POST['register-username'];
     }
@@ -76,12 +76,12 @@ else
     $_SESSION['errorusername'] = $errorusername;
 }
 
-/* vérification password, doit contenir entre 8 et 30 caractères, commencant par une lettre ou un chiffre obligatoirement, puis peut utiliser lettres/chiffres, caractères spéciaux, mais ne peux pas utiliser deux caractères spéciaux à la suite */
-if (isset($_POST['register-password']))
+/* Vérification password, doit contenir entre 8 et 30 caractères, commencant par une lettre ou un chiffre obligatoirement, puis peut utiliser lettres/chiffres, caractères spéciaux, mais ne peux pas utiliser deux caractères spéciaux à la suite */
+if(isset($_POST['register-password']))
 {
     $_POST['register-password'] = htmlspecialchars($_POST['register-password']);
 
-    if (preg_match("#^(?=.{8,30}$)(?![-_*.])(?!.*[-_*.]{2})[a-zA-Z0-9-_*.]+$#", $_POST['register-password']))
+    if(preg_match("#^(?=.{8,30}$)(?![-_*.])(?!.*[-_*.]{2})[a-zA-Z0-9-_*.]+$#", $_POST['register-password']))
     {
         $password = password_hash($_POST['register-password'], PASSWORD_DEFAULT);
     }
@@ -95,13 +95,13 @@ else
     $_SESSION['errorpassword'] = $errorpassword;
 }
 
-// vérification question secrète en la récupérant du formulaire et la comparant avec les question secrètes normalement disponibles
+// Vérification question secrète en la récupérant du formulaire et la comparant avec les question secrètes normalement disponibles
 $secretquestion1 = "Qu'est ce que vous vouliez devenir plus grand, lorsque vous étiez enfant ?";
 $secretquestion2 = "Quel est le nom de famille de votre professeur d'enfance préféré ?";
 $secretquestion3 = "Quel est le nom et prénom de votre premier amour ?";
 $secretquestion4 = "Dans quelle ville se sont rencontrés vos parents ?";
 
-if (isset($_POST['register-secretquestion']) && $_POST['register-secretquestion'] == $secretquestion1 || $secretquestion2 || $secretquestion3 || $secretquestion4)
+if(isset($_POST['register-secretquestion']) && $_POST['register-secretquestion'] == $secretquestion1 || $secretquestion2 || $secretquestion3 || $secretquestion4)
 {
 	$secretquestion = htmlspecialchars($_POST['register-secretquestion']);
 }
@@ -110,8 +110,8 @@ else
 	$_SESSION['errorsecretquestion'] = $errorsecretquestion;
 }
 
-// vérification réponse secrète, doit contenir entre 2 et 20 caractères, commencant par minimum 2 lettres, avec possibilitée d'avoir apostrophe ou tiret-d'union puis suite texte 
-if (isset($_POST['register-secretanswer']))
+// Vérification réponse secrète, doit contenir entre 2 et 20 caractères, commencant par minimum 2 lettres, avec possibilitée d'avoir apostrophe ou tiret-d'union puis suite texte 
+if(isset($_POST['register-secretanswer']))
 {
     $_POST['register-secretanswer'] = htmlspecialchars($_POST['register-secretanswer']);
 
@@ -134,14 +134,14 @@ else
 }
 
 // Vérification si username pas déjà dispo en database si prérequis du formulaire rempli, si non dispo inscris l'utilisateur dans la bdd
-if (isset($prenom, $nom, $username, $password, $secretquestion, $secretanswer))
+if(isset($prenom, $nom, $username, $password, $secretquestion, $secretanswer))
 {
 	$req = $bdd->prepare('SELECT nom, prenom, username FROM account WHERE username = :username');
 	$req->execute(array(
 		'username' => $username));
 	$user = $req->fetch();
 
-	if (isset($user) && $user['username'] === $username)  
+	if(isset($user) && $user['username'] === $username)  
 	{	
    		$_SESSION['usernametaken'] = $usernametaken;
    		header('Location: register.php');

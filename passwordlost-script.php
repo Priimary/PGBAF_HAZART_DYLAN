@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Connexion bdd
+// Connexion BDD
 try
 {
 	$bdd = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
@@ -9,19 +9,20 @@ catch(Exception $e)
 {
 	die('Erreur : '.$e->getMessage());
 }
-// variable message erreur
+
+// Variables message d'erreurs
 $errorpasswordlost = "Informations invalides";
 $errorpasswordlost_password = "Mauvais format, respectez la condition au-dessus";
 $errorpasswordlost_password2 = "Les deux champs ne sont pas identiques";
 $errorpasswordused = "Veuillez définir un nouveau mot de passe différent du précédent";
 
-// si données reçues depuis le champ password & variable session créée après avoir vérifié les données du formulaire
-if (isset($_POST['passwordlost-password'], $_POST['passwordlost-password2'], $_SESSION['passwordlost-username']) 
+/* Vérifie si champs password remplis, variable session créée, et nouveaux mdp identiques, puis sécurise le nouveau mdp, puis vérifie si format nouveau mdp correct, puis vérifie si différent de l'ancien */
+if(isset($_POST['passwordlost-password'], $_POST['passwordlost-password2'], $_SESSION['passwordlost-username']) 
 	&& $_POST['passwordlost-password'] === $_POST['passwordlost-password2'])
 {
     $_POST['passwordlost-password'] = htmlspecialchars($_POST['passwordlost-password']);
 
-    if (preg_match("#^(?=.{8,30}$)(?![-_*.])(?!.*[-_*.]{2})[a-zA-Z0-9-_*.]+$#", $_POST['passwordlost-password']))
+    if(preg_match("#^(?=.{8,30}$)(?![-_*.])(?!.*[-_*.]{2})[a-zA-Z0-9-_*.]+$#", $_POST['passwordlost-password']))
     {
         $req = $bdd->prepare('SELECT password FROM account WHERE username = :username');
 		$req->execute(array('username' => $_SESSION['passwordlost-username']));
@@ -54,47 +55,40 @@ if (isset($_POST['passwordlost-password'], $_POST['passwordlost-password2'], $_S
         exit();
     }
 }
-elseif (isset($_POST['passwordlost-password'], $_POST['passwordlost-password2'], $_SESSION['passwordlost-username']) 
+elseif(isset($_POST['passwordlost-password'], $_POST['passwordlost-password2'], $_SESSION['passwordlost-username']) 
 	&& $_POST['passwordlost-password'] != $_POST['passwordlost-password2'])
 {
 	$_SESSION['errorpasswordlost-password2'] = $errorpasswordlost_password2;
 	header('Location: passwordlost.php');
 	exit();
 }
+// Vérifie si champs username, secretquestion et secretanswer remplis, puis les sécurise, puis vérifie s'ils correspondent à ceux dans la BDD
 else
 {
-	// rend inoffensif les possibles balises html de l'username
-	if (isset($_POST['passwordlost-username'], $_POST['passwordlost-secretquestion'], $_POST['passwordlost-secretanswer']))
+	if(isset($_POST['passwordlost-username'], $_POST['passwordlost-secretquestion'], $_POST['passwordlost-secretanswer']))
 	{
 	    $username = htmlspecialchars($_POST['passwordlost-username']);
 	    $secretquestion = htmlspecialchars($_POST['passwordlost-secretquestion']);
 	    $secretanswer = htmlspecialchars($_POST['passwordlost-secretanswer']);
-	}
-	else
-	{
-		$_SESSION['errorpasswordlost'] = $errorpasswordlost;
-	    header('Location: passwordlost.php');
-	    exit();
-	}
-	// cherche si les données reçues correspondent à celles dans la bdd
-	if(isset($username, $secretquestion, $secretanswer))
-	{
-		$req = $bdd->prepare('SELECT username, question, reponse FROM account WHERE username = :username');
-		$req->execute(array(
-			'username' => $username));
-		$user = $req->fetch();
+	    if(isset($username, $secretquestion, $secretanswer))
+		{
+			$req = $bdd->prepare('SELECT username, question, reponse FROM account WHERE username = :username');
+			$req->execute(array(
+				'username' => $username));
+			$user = $req->fetch();
 
-		if (isset($user) && $user['username'] === $username && $user['question'] === $secretquestion && $user['reponse'] === $secretanswer)  
-		{	
-	   		$_SESSION['passwordlost-username'] = $username;
-	   		header('Location: passwordlost.php');
-	   		exit();
-	   	}
-	   	else
-	   	{
-	   		$_SESSION['errorpasswordlost'] = $errorpasswordlost;
-	    	header('Location: passwordlost.php');
-	    	exit();
+			if(isset($user) && $user['username'] === $username && $user['question'] === $secretquestion && $user['reponse'] === $secretanswer)  
+			{	
+	   			$_SESSION['passwordlost-username'] = $username;
+	   			header('Location: passwordlost.php');
+	   			exit();
+	   		}
+	   		else
+	   		{
+	   			$_SESSION['errorpasswordlost'] = $errorpasswordlost;
+	    		header('Location: passwordlost.php');
+	    		exit();
+	   		}
 	   	}
 	}
 	else
@@ -103,5 +97,6 @@ else
 	    header('Location: passwordlost.php');
 	    exit();
 	}
+	
 }
 ?>

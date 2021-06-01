@@ -9,15 +9,16 @@ catch(Exception $e)
 {
 	die('Erreur : '.$e->getMessage());
 }
-// insertion fichier fonctions
+
+// Insertion fichier fonctions
 include 'likefunction.php';
-// variables de vérifications
+
+// Mise en variable données nécessaires
 $check1 = 'like';
 $check2 = 'dislike';
-$id_user = $_SESSION['id_user'];
 $id_acteur = $_GET['acteur'];
 
-// vérification et mise en variable donnée formulaire
+// Vérification et mise en variable donnée formulaire
 if(isset($_POST['likeBtn']) && $_POST['likeBtn'] === $check1)
 {
 	$action = $_POST['likeBtn'];
@@ -34,27 +35,27 @@ else
 	exit();
 }
 
-// traitement donnée formulaire suivant le contenu
+// Traitement donnée formulaire suivant le contenu
 switch($action)
 {
-	// si action sur bouton j'aime
+	// Si action sur bouton j'aime
 	case 'like':
-			// insertion données dans la table vote
+			// Insertion données dans la table vote
 			$ins = $bdd->prepare('INSERT INTO vote(id_user, id_acteur, vote) VALUES(:id_user,:id_acteur,:vote)');
 			$ins->execute(array(
-				'id_user' => $id_user,
+				'id_user' => $_SESSION['id_user'],
 				'id_acteur' => $id_acteur,
 				'vote' => $action));
 			header('Location: actors.php?acteur='.$id_acteur);
 			exit();
 			break;
 
-	// si action sur bouton je n'aime pas
+	// Si action sur bouton je n'aime pas
 	case 'dislike':
-			// insertion données dans la table vote
+			// Insertion données dans la table vote
 			$ins = $bdd->prepare('INSERT INTO vote(id_user, id_acteur, vote) VALUES(:id_user,:id_acteur,:vote)');
 			$ins->execute(array(
-				'id_user' => $id_user,
+				'id_user' => $_SESSION['id_user'],
 				'id_acteur' => $id_acteur,
 				'vote' => $action));
 			header('Location: actors.php?acteur='.$id_acteur);

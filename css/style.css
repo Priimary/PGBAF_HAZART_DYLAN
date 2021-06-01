@@ -158,7 +158,7 @@ h3
 	margin-right: auto;
 	margin-bottom: 50px;
 }
-.actors-entry
+.actors-entry-content
 {
 	display: flex;
 	flex-direction: row;
@@ -169,11 +169,11 @@ h3
 	width: 95%;
 	height: 110px;
 }
-.actors-entry img
+.actors-entry-content img
 {
 	width: 30%;
 }
-.actors-entry-content
+.actors-entry-description-container
 {
 	width: 65%;
 	margin: 0px 5px 0px 5px;
@@ -184,7 +184,7 @@ h3
 {
 	font-size: 18px;
 }
-.actors-entry a
+.actors-entry-content a
 {
 	position: relative;
 	top: 92px;
@@ -455,6 +455,11 @@ h3
 {
 	height: 150px;
 	width: 300px;
+}
+#likesystem-container img
+{
+	height: 30px;
+	width: 30px;
 }
 
 /* PAGE GESTION DE COMPTE */

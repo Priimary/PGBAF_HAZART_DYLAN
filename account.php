@@ -11,35 +11,35 @@ session_start();
     	<meta name="viewport" content="width=device-width"/>
     </head>
 	<body>
-		<!-- bloc page entière -->
+		<!-- Bloc page entière gestion de compte -->
 		<div id="account-container">
-			<!-- insertion de l'en-tête -->
+			<!-- Insertion de l'en-tête -->
 			<header class="site-header-container">
 				<div class="site-header-content"><?php include 'header.php'; ?></div>
 			</header>
-			<!-- contenu de la page entre en-tête et pied de page -->
+			<!-- Contenu de la page entre en-tête et pied de page -->
 			<div id="account-content">
-				<!-- section formulaire de changement informations utilisateur -->
+				<!-- Section formulaire de changement informations utilisateur -->
 				<section id="account-form-container">
-					<!-- titre pour formulaire -->
+					<!-- Titre pour formulaire -->
 					<h1>INFORMATIONS</h1>
 
-					<!-- formulaire affichant nom et bouton formulaire nouveau nom -->
+					<!-- Formulaire affichant nom et bouton formulaire nouveau nom -->
 					<form id="account-form-nom" method="post" action="account-script.php">
 						<p>Nom :<span class="account-info"><?php echo $_SESSION['nom']; ?></span></p>
 						<button name="nomBtn" type="submit" value="nom"><img src="img/pencil.png"></button>
 					</form>
 					<br />
 
-					<!-- si appuie sur bouton nomBtn affiche le formulaire de changement nom -->
+					<!-- Si appuie sur bouton nomBtn affiche le formulaire de changement nom -->
 					<?php
 					if(isset($_SESSION['changeNom']))
 					{
 					?>
-						<!-- formulaire changement de nom -->
+						<!-- Formulaire changement de nom -->
 						<form id="account-form-new-nom" method="post" action="account-script.php">
 
-							<!-- message d'erreur si nom identique à l'ancien -->
+							<!-- Message d'erreur si nom identique à l'ancien -->
 							<?php
 							if(isset($_SESSION['errorAccountNomUsed']))
 							{
@@ -48,12 +48,13 @@ session_start();
 							}
 							?>
 
+							<!-- Champ nouveau nom -->
 							<label for="account-nom">Nouveau nom</label>
 							:
 							<input type=text name="account-nom" id="account-nom" required size="30" minlenght="2" maxlenght="20" />	
 							<p><span class="requirement-account-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
-							<!-- message d'erreur si format invalide du nouveau nom -->
+							<!-- Message d'erreur si format invalide du nouveau nom -->
 							<?php
 							if(isset($_SESSION['errorAccountNom']))
 							{
@@ -62,10 +63,13 @@ session_start();
 							}
 							?>
 
+							<!-- Bouton validation -->
 			                <input class="validation-button" type="submit" value="Valider"/>
+
 			            </form>
 					<?php
 					}
+					// Message succès changement nom
 					elseif(isset($_SESSION['succesChangeNom']))
 							{
 								$succesChangeNom = $_SESSION['succesChangeNom'];
@@ -73,22 +77,22 @@ session_start();
 							}
 					?>
 
-					<!-- formulaire affichant prenom et bouton affichage formulaire nouveau prenom -->
+					<!-- Formulaire affichant prenom et bouton affichage formulaire nouveau prenom -->
 					<form id="account-form-prenom" method="post" action="account-script.php">
 						<p>Prenom :<span class="account-info"><?php echo $_SESSION['prenom']; ?></span></p>
 						<button name="prenomBtn" type="submit" value="prenom"><img src="img/pencil.png"></button>
 					</form>
 					<br />
 
-					<!-- si appuie sur prenomBtn affiche le formulaire changement prenom -->
+					<!-- Si appuie sur prenomBtn affiche le formulaire changement prenom -->
 					<?php
 					if(isset($_SESSION['changePrenom']))
 					{
 					?>
-						<!-- formulaire changement de prenom -->
+						<!-- Formulaire changement de prenom -->
 						<form id="account-form-new-prenom" method="post" action="account-script.php">
 
-							<!-- message d'erreur si prenom identique à l'ancien -->
+							<!-- Message d'erreur si prenom identique à l'ancien -->
 							<?php
 							if(isset($_SESSION['errorAccountPrenomUsed']))
 							{
@@ -97,12 +101,13 @@ session_start();
 							}
 							?>
 
+							<!-- Champ nouveau prénom -->
 							<label for="account-prenom">Nouveau prénom</label>
 							:
 							<input type=text name="account-prenom" id="account-prenom" required size="30" minlenght="2" maxlenght="20" />
 							<p><span class="requirement-account-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
-							<!-- message d'erreur si format invalide nouveau prenom -->
+							<!-- Message d'erreur si format invalide nouveau prenom -->
 							<?php
 							if(isset($_SESSION['errorAccountPrenom']))
 							{
@@ -111,10 +116,13 @@ session_start();
 							}
 							?>
 
+							<!-- Bouton validation -->
 							<input class="validation-button" type="submit" value="Valider"/>
+
 						</form>
 					<?php
 					}
+					// Message succès changement prénom
 					elseif(isset($_SESSION['succesChangePrenom']))
 							{
 								$succesChangePrenom = $_SESSION['succesChangePrenom'];
@@ -122,22 +130,22 @@ session_start();
 							}
 					?>
 
-					<!-- formulaire affichage nom d'utilisateur et bouton formulaire changement nom d'utilisateur -->
+					<!-- Formulaire affichage nom d'utilisateur et bouton formulaire changement nom d'utilisateur -->
 					<form id="account-form-username" method="post" action="account-script.php">
 						<p>Nom d'utilisateur :<span class="account-info"><?php echo $_SESSION['username']; ?></span></p>
 						<button name="usernameBtn" type="submit" value="username"><img src="img/pencil.png"></button>
 					</form>
 					<br />
 
-					<!-- si appuie sur bouton usernameBtn affiche formulaire changement nom d'utilisateur -->
+					<!-- Si appuie sur bouton usernameBtn affiche formulaire changement nom d'utilisateur -->
 					<?php
 					if(isset($_SESSION['changeUsername']))
 					{
 					?>
-						<!-- formulaire changement nom d'utilisateur -->
+						<!-- Formulaire changement nom d'utilisateur -->
 						<form id="account-form-new-username" method="post" action="account-script.php">
 
-							<!-- message d'erreur si nom d'utilisateur déjà pris -->
+							<!-- Message d'erreur si nom d'utilisateur déjà pris -->
 							<?php
 							if(isset($_SESSION['errorAccountUsernameUsed']))
 							{
@@ -146,12 +154,13 @@ session_start();
 							}
 							?>
 
+							<!-- Champ nouveau nom d'utilisateur -->
 							<label for="account-username">Nouveau nom d'utilisateur</label>
 							:
 							<input type=text name="account-username" id="account-username" required size="30" minlenght="2" maxlenght="20" />
 							<p><span class="requirement-account-form">5 à 20 caractères (a-z, A-Z, 0-9, - et _)</span></p>
 
-							<!-- message d'erreur si format invalide nouveau nom d'utilisateur -->
+							<!-- Message d'erreur si format invalide nouveau nom d'utilisateur -->
 							<?php
 							if(isset($_SESSION['errorAccountUsername']))
 							{
@@ -160,10 +169,13 @@ session_start();
 							}
 							?>
 
+							<!-- Bouton validation -->
 							<input class="validation-button" type="submit" value="Valider"/>
+
 						</form>
 					<?php
 					}
+					// Message succès changement nom d'utilisateur
 					elseif(isset($_SESSION['succesChangeUsername']))
 						{
 							$succesChangeUsername = $_SESSION['succesChangeUsername'];
@@ -171,22 +183,22 @@ session_start();
 						}
 					?>
 					
-					<!-- formulaire affichant mot de passe et bouton formulaire changement de mot de passe -->
+					<!-- Formulaire affichant mot de passe et bouton formulaire changement de mot de passe -->
 					<form id="account-form-password" method="post" action="account-script.php">
 						<p>Mot de passe :<span class="account-info">********</span></p>
 						<button name="passwordBtn" type="submit" value="password"><img src="img/pencil.png"></button>
 					</form>
 					<br />
 
-					<!-- si appuie sur passwordBtn affiche formulaire changement mdp -->
+					<!-- Si appuie sur passwordBtn affiche formulaire changement mdp -->
 					<?php
 					if(isset($_SESSION['changePassword']))
 					{
 					?>
-						<!-- formulaire changement de mdp -->
+						<!-- Formulaire changement de mdp -->
 						<form id="account-form-new-password" method="post" action="account-script.php">
 
-							<!-- message d'erreur si mdp identique à l'ancien -->
+							<!-- Message d'erreur si mdp identique à l'ancien -->
 							<?php
 							if(isset($_SESSION['errorAccountPasswordUsed']))
 							{
@@ -195,12 +207,13 @@ session_start();
 							}
 	                		?>
 
+	                		<!-- Champ ancien mot de passe -->
 		                	<label for="account-password">Mot de passe actuel</label>
 		                	:
 		                	<input type="password" name="account-password" id="account-password" required size="30" minlenght="8" maxlenght="30" />
 							<br />
 		                	
-		                	<!-- message d'erreur si ancien mdp invalide -->
+		                	<!-- Message d'erreur si ancien mdp invalide -->
 		                	<?php
 							if(isset($_SESSION['errorAccountPassword']))
 							{
@@ -208,13 +221,14 @@ session_start();
 								echo "<p><span class='error-account'>$errorAccountPassword</span></p>";                    	
 							}
 							?>
-		                		
+		                	
+		                	<!-- Champ nouveau mot de passe -->	
 							<label for="account-newpassword">Nouveau mot de passe</label>
 							:
 							<input type="password" name="account-newpassword" id="account-newpassword" required size="30" minlenght="8" maxlenght="30" />
 							<p><span class="requirement-account-form">8 à 30 caractères (a-z, A-Z, 0-9, -, _, *, .)</span></p>
 
-							<!-- message d'erreur si format nouveau mdp invalide -->
+							<!-- Message d'erreur si format nouveau mdp invalide -->
 							<?php
 							if(isset($_SESSION['errorAccountNewPassword']))
 							{
@@ -223,11 +237,12 @@ session_start();
 							}
 							?>
 
+							<!-- Champ répétation nouveau mot de passe -->
 		                	<label for="account-newpassword2">Répétition nouveau mot de passe</label>
 							:
 							<input type="password" name="account-newpassword2" id="account-newpassword2" required size="30" minlenght="8" maxlenght="30" />
 
-							<!-- message d'erreur si les deux champs nouveau mdp ne sont pas identiques -->
+							<!-- Message d'erreur si les deux champs nouveau mdp ne sont pas identiques -->
 							<?php
 							if(isset($_SESSION['errorAccountNewPassword2']))
 							{
@@ -236,10 +251,13 @@ session_start();
 							}
 							?>
 
+							<!-- Bouton validation -->
 		                	<input class="validation-button" type="submit" value="Valider"/>
+
 		                </form>
 					<?php
 					}
+					// Message succès changement mot de passe
 					elseif(isset($_SESSION['succesChangePassword']))
 						{
 							$succesChangePassword = $_SESSION['succesChangePassword'];
@@ -247,22 +265,22 @@ session_start();
 						}
 					?>
 
-					<!-- formulaire affichage question secrète et bouton formulaire changement question secrète -->
+					<!-- Formulaire affichage question secrète et bouton formulaire changement question secrète -->
 					<form id="account-form-secretquestion" method="post" action="account-script.php">
 						<p>Question secrète :<span class="account-info"><?php echo $_SESSION['question']; ?></span></p>
 						<button name="questionBtn" type="submit" value="question"><img src="img/pencil.png"></button>
 					</form>
 					<br />
 
-					<!-- si appuie sur questionBtn affiche formulaire changement questino secrète -->
+					<!-- Si appuie sur questionBtn affiche formulaire changement questino secrète -->
 					<?php
 					if(isset($_SESSION['changeQuestion']))
 					{
 					?>
-						<!-- formulaire changement question secrète -->
+						<!-- Formulaire changement question secrète -->
 						<form id="account-form-new-secretquestion" method="post" action="account-script.php">
 
-							<!-- message d'erreur si question secrète identique à l'ancienne -->
+							<!-- Message d'erreur si question secrète identique à l'ancienne -->
 							<?php
 							if(isset($_SESSION['errorAccountSecretQuestionUsed']))
 							{
@@ -271,6 +289,7 @@ session_start();
 							}
 							?>
 
+							<!-- Champ nouvelle question secrète -->
 							<label for="account-secretquestion">Choisissez une nouvelle question secrète</label>
 							:
 							<select name="account-secretquestion" id="account-secretquestion">
@@ -289,7 +308,7 @@ session_start();
 								</option>
 							</select>
 							
-							<!-- message d'erreur si question secrète invalide -->
+							<!-- Message d'erreur si question secrète invalide -->
 							<?php
 							if(isset($_SESSION['errorAccountSecretQuestion']))
 							{
@@ -298,10 +317,13 @@ session_start();
 							}
 							?>
 
+							<!-- Bouton validation -->
 							<input class="validation-button" type="submit" value="Valider"/>
+
 						</form>
 					<?php
 					}
+					// Message succès changement question secrète
 					elseif(isset($_SESSION['succesChangeSecretQuestion']))
 						{
 							$succesChangeSecretQuestion = $_SESSION['succesChangeSecretQuestion'];
@@ -309,22 +331,22 @@ session_start();
 						}
 					?>
 
-					<!-- formulaire affichage reponse secrète et bouton formulaire changement reponse secrète -->
+					<!-- Formulaire affichage reponse secrète et bouton formulaire changement reponse secrète -->
 					<form id="account-form-secretanswer" method="post" action="account-script.php">
 						<p>Réponse secrète :<span class="account-info">********</span></p>
 						<button name="answerBtn" type="submit" value="answer"><img src="img/pencil.png"></button>
 					</form>
 					<br />
 
-					<!-- si appuie sur bouton answerBtn affiche formulaire changement réponse secrète -->
+					<!-- Si appuie sur bouton answerBtn affiche formulaire changement réponse secrète -->
 					<?php
 					if(isset($_SESSION['changeAnswer']))
 					{
 					?>
-						<!-- formulaire changement de réponse secrète -->
+						<!-- Formulaire changement de réponse secrète -->
 						<form id="account-form-new-secretanswer" method="post" action="account-script.php">
 
-							<!-- message d'erreur réponse secrète identique à l'ancienne -->
+							<!-- Message d'erreur réponse secrète identique à l'ancienne -->
 							<?php
 							if(isset($_SESSION['errorAccountSecretAnswerUsed']))
 							{
@@ -333,12 +355,13 @@ session_start();
 							}
 							?>
 
+							<!-- Champ réponse secrète actuelle -->
 							<label for="account-secretanswer">Réponse actuelle à la question secrète</label>
 							:
 							<input type="text" name="account-secretanswer" id="account-secretanswer" required size="30" minlenght="2" maxlenght="20" />
 							<br />
 							
-							<!-- message d'erreur ancienne réponse invalide -->
+							<!-- Message d'erreur ancienne réponse invalide -->
 							<?php
 							if(isset($_SESSION['errorAccountSecretAnswer']))
 							{
@@ -347,11 +370,13 @@ session_start();
 							}
 							?>
 							
+							<!-- Champ nouvelle réponse secrète -->
 							<label for="account-newsecretanswer">Nouvelle réponse à la question secrète</label>
 							:
 							<input type="text" name="account-newsecretanswer" id="account-newsecretanswer" required size="30" minlenght="2" maxlenght="20" />
 							<br />
-							<!-- message d'erreur mauvais format nouvelle réponse secrète -->
+
+							<!-- Message d'erreur mauvais format nouvelle réponse secrète -->
 							<?php
 							if(isset($_SESSION['errorAccountNewSecretAnswer']))
 							{
@@ -360,10 +385,13 @@ session_start();
 							}
 							?>
 
+							<!-- Bouton validation -->
 							<input class="validation-button" type="submit" value="Valider"/>
+
 						</form>
 					<?php
 					}
+					// Message succès changement réponse secrète
 					elseif(isset($_SESSION['succesChangeSecretAnswer']))
 						{
 							$succesChangeSecretAnswer = $_SESSION['succesChangeSecretAnswer'];
@@ -372,7 +400,7 @@ session_start();
 					?>
 				</section>
 			</div>
-			<!-- insertion pied de page -->
+			<!-- Insertion pied de page -->
 			<footer class="site-footer-container">
 				<div class="site-footer-content"><?php include 'footer.php'; ?></div>
 			</footer>

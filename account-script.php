@@ -1,6 +1,7 @@
 <?php
 session_start();
-// mise en variable données nécessaires
+
+// Mise en variable données nécessaires
 $checkNom = "nom";
 $checkPrenom = "prenom";
 $checkUsername = "username";
@@ -33,7 +34,7 @@ $succesChangePassword = "Le changement de votre mot de passe s'est bien produit 
 $succesChangeSecretQuestion = "Le changement de votre question secrète s'est bien produit !";
 $succesChangeSecretAnswer = "Le changement de votre réponse secrète s'est bien produit !";
 
-// Connexion bdd
+// Connexion BDD
 try
 {
     $bdd = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
@@ -43,7 +44,7 @@ catch(Exception $e)
     die('Erreur : '.$e->getMessage());
 }
 
-// vérification et mise en variable données boutons formulaires
+// Vérification et mise en variable données boutons pour afficher les formulaires de changement
 if(isset($_POST['nomBtn']) && $_POST['nomBtn'] === $checkNom)
 {
 	$_SESSION['changeNom'] = true;
@@ -81,7 +82,7 @@ elseif(isset($_POST['answerBtn']) && $_POST['answerBtn'] === $checkAnswer)
 	exit();
 }
 
-// Vérification si champs remplis, puis si nouveau nom bon format, puis si différent de l'ancien
+// Vérification si champs remplis, sécurise le texte reçu puis vérifie si nouveau nom bon format, puis si différent de l'ancien
 if(isset($_POST['account-nom']))
 {
     $_POST['account-nom'] = htmlspecialchars($_POST['account-nom']);
@@ -116,7 +117,7 @@ if(isset($_POST['account-nom']))
     }
 }
 
-// vérification si champs remplis, si nouveau prénom bon format, puis si différent de l'ancien 
+// Vérification si champs remplis, sécurise le texte reçu puis vérifie si nouveau prénom bon format, puis si différent de l'ancien 
 if(isset($_POST['account-prenom']))
 {
     $_POST['account-prenom'] = htmlspecialchars($_POST['account-prenom']);
@@ -152,7 +153,7 @@ if(isset($_POST['account-prenom']))
     }
 }
 
-// vérification si champs remplis, puis si nouveau nom d'utilisateur bon format, et enfin si pas déjà utilisé
+// Vérification si champs remplis, sécurise le texte reçu puis vérifie si nouveau nom d'utilisateur bon format, et enfin si pas déjà utilisé dans la BDD
 if(isset($_POST['account-username']))
 {
     $_POST['account-username'] = htmlspecialchars($_POST['account-username']);
@@ -193,7 +194,7 @@ if(isset($_POST['account-username']))
     }
 }
 
-/* vérification si champs remplis et si nouveaux mdp sont identiques, puis vérification si ancien mdp identique celui bdd, enfin vérification si nouveau mdp bon format et l'ajoute dans la bdd */
+/* Vérification si champs remplis et si nouveaux mdp sont identiques, puis vérification si ancien mdp identique celui bdd et nouveau mdp différent de l'ancien, puis sécurise nouveau mdp, enfin vérification si nouveau mdp bon format et l'ajoute dans la bdd */
 
 if(isset($_POST['account-password'], $_POST['account-newpassword'], $_POST['account-newpassword2'])
 	&& $_POST['account-newpassword'] === $_POST['account-newpassword2'])
@@ -207,9 +208,9 @@ if(isset($_POST['account-password'], $_POST['account-newpassword'], $_POST['acco
 	$req->closeCursor();
 	if(isset($isPasswordCorrect) && $isPasswordCorrect && !$isNewPasswordUsed)
 	{
+		$_POST['account-newpassword'] = htmlspecialchars($_POST['account-newpassword']);
 		if(preg_match("#^(?=.{8,30}$)(?![-_*.])(?!.*[-_*.]{2})[a-zA-Z0-9-_*.]+$#", $_POST['account-newpassword']))
 		{
-			$_POST['account-newpassword'] = htmlspecialchars($_POST['account-newpassword']);
 			$newPassword = password_hash($_POST['account-newpassword'], PASSWORD_DEFAULT);
 			$upd = $bdd->prepare('UPDATE account SET password = :password WHERE id_user = :id_user');
 			$upd->execute(array(
@@ -249,7 +250,7 @@ elseif(isset($_POST['account-password'], $_POST['account-newpassword'], $_POST['
 	exit();
 }
 
-// vérification si champs remplis, si nouvelle réponse correcte et si différente de l'ancienne
+/* Vérification si champs remplis, puis sécurise ancienne et nouvelle réponse, puis vérifie si ancienne réponse correcte et nouvelle réponse différente de l'ancienne, puis si bon format */
 if(isset($_POST['account-secretanswer'], $_POST['account-newsecretanswer']))
 {
     $secretAnswer = htmlspecialchars($_POST['account-secretanswer']);
@@ -295,7 +296,7 @@ if(isset($_POST['account-secretanswer'], $_POST['account-newsecretanswer']))
     }
 }
 
-// vérification si champs remplis et si la question est correcte, puis si elle est différente de l'ancienne
+// Vérification si champs remplis et si la question est correcte, puis sécurise le texte, et enfin vérifie si elle est différente de l'ancienne
 if(isset($_POST['account-secretquestion']) && $_POST['account-secretquestion'] == $secretQuestion1 || $secretQuestion2 || $secretQuestion3 || $secretQuestion4)
 {
     $newQuestion = htmlspecialchars($_POST['account-secretquestion']);
