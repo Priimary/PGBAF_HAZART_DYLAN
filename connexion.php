@@ -74,4 +74,5 @@ session_start();
 </html>
 <?php
     unset($_SESSION['errorConnexion']);
+    unset($_SESSION['registerdone']);
 ?>

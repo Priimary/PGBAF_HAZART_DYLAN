@@ -159,21 +159,22 @@ if(isset($prenom, $nom, $username, $password, $secretquestion, $secretanswer))
 		    'question' => $secretquestion,
 		    'reponse' => $secretanswer));
 		$ins->closeCursor();
-	}
-	if($ins)
-	{
-        $registerdone = "Vous avez bien réussi à créer votre compte !";
-        $_SESSION['registerdone'] = $registerdone;
-		header('Location: connexion.php');
-		exit();
-	}
-	else
-	{
-		echo "Erreur, contactez l'administrateur du site pour plus d'informations";
+        if($ins)
+        {
+            $registerdone = "Vous avez bien réussi à créer votre compte !";
+            $_SESSION['registerdone'] = $registerdone;
+            header('Location: connexion.php');
+            exit();
+        }
+        else
+        {
+            echo "Erreur, contactez l'administrateur du site pour plus d'informations";
+        }
 	}
 }
 else
 {
-	echo "Erreur, contactez l'administrateur du site pour plus d'informations";	
+	header('Location: register.php');
+    exit();	
 }
 ?>

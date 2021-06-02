@@ -85,10 +85,15 @@ if($_SESSION['loggedIn'] != true)
 
 				<!-- Message d'erreur si commentaire vide -->
 				<?php
-				if(isset($_SESSION['errorpost']))
+				if(isset($_SESSION['errorPost']))
 				{
-					$errorpost = $_SESSION['errorpost'];
-					echo "<p><span class='errorpost'>$errorpost</span></p>";
+					$errorPost = $_SESSION['errorPost'];
+					echo "<p><span class='errorpost'>$errorPost</span></p>";
+				}
+				elseif(isset($_SESSION['errorPosted']))
+				{
+					$errorPosted = $_SESSION['errorPosted'];
+					echo "<p><span class='errorpost'>$errorPosted</span></p>";
 				}
 				?>
 
@@ -133,5 +138,6 @@ if($_SESSION['loggedIn'] != true)
 	</body>
 </html>
 <?php
-unset($_SESSION['errorpost']);
+unset($_SESSION['errorPost']);
+unset($_SESSION['errorPosted']);
 ?>

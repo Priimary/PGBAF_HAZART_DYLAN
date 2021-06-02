@@ -89,7 +89,7 @@ if(isset($_POST['account-nom']))
     if(preg_match("#^(?=.{2,20}$)([a-zA-Z]{2,}'?-?[a-zA-Z]{2,}$)#", $_POST['account-nom']))
     {
         $newNom = $_POST['account-nom'];
-        if(isset($newNom) && $nom != $_SESSION['nom'])
+        if(isset($newNom) && $newNom != $_SESSION['nom'])
         {
         	$ins = $bdd->prepare('INSERT INTO account(nom) VALUES (:nom) WHERE id_user = :id_user');
         	$ins->execute(array(
@@ -326,4 +326,3 @@ elseif(isset($_POST['account-secretquestion']) && $_POST['account-secretquestion
 	header('Location: account.php');
 	exit();
 }
-

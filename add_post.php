@@ -10,12 +10,16 @@ catch(Exception $e)
 	die('Erreur : '.$e->getMessage());
 }
 
+// Insertion fichier fonctions
+include 'likefunction.php';
+
 // Mise en variable données nécessaires
 $id_acteur = $_GET['acteur'];
-$errorpost = 'Veuillez écrire un commentaire professionnel et constructif.';
+$errorPost = 'Veuillez écrire un commentaire professionnel et constructif.';
+$errorPosted = 'Vous avez déjà écrit un commentaire sur cette page.';
 
 // Vérifie si champ rempli, puis sécurise le texte reçu, puis vérifie si bon format, puis insert dans la BDD
-if (isset($_POST['commentaire']))
+if(isset($_POST['commentaire']) && ! userPosted($id_acteur))
 {
     $post = htmlspecialchars($_POST['commentaire']);
     if(isset($post) && preg_match("#(.{5,})#s", $post))
@@ -30,14 +34,21 @@ if (isset($_POST['commentaire']))
 	}
 	else
 	{
-		$_SESSION['errorpost'] = $errorpost;
+		$_SESSION['errorPost'] = $errorPost;
     	header('Location: actors.php?acteur='.$id_acteur);
 		exit();
 	}
 }
+elseif(userPosted($id_acteur))
+{
+	$_SESSION['errorPosted'] = $errorPosted;
+	header('Location: actors.php?acteur='.$id_acteur);
+	exit();
+}
 else
 {
-    $_SESSION['errorpost'] = $errorpost;
+    $_SESSION['errorPost'] = $errorPost;
     header('Location: actors.php?acteur='.$id_acteur);
 	exit();
 }
+?>
