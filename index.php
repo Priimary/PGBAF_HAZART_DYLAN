@@ -10,8 +10,7 @@ if($_SESSION['loggedIn'] != true)
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8"/>
-    	<title>Extranet GBAF</title>
+    	<title>Accueil GBAF</title>
     	<link rel="stylesheet" href="style.css"/>
         <link rel="icon" href="img/favicon.ico"/>
         <meta name="viewport" content="width=device-width"/>
@@ -30,9 +29,7 @@ if($_SESSION['loggedIn'] != true)
                     <!-- Article contenu gbaf -->
         			<article id="gbaf-section-content">
                         <!--Titre gbaf -->
-        				<h1>
-                            Qu'est ce que GBAF et ce site ?
-                        </h1>
+        				<h1>Qu'est ce que GBAF et ce site ?</h1>
                         <!-- Description gbaf -->
         				<p>
         					Le Groupement Banque-Assurance Français (GBAF) est une fédération représentant les 6 grands groupes français.<br />
@@ -78,7 +75,7 @@ if($_SESSION['loggedIn'] != true)
                             <!-- Article pour chaque acteur -->
         				    <article class="actors-entry-content">
                                 <!-- Logo de chaque acteur -->
-                                <img src="img/<?php echo htmlspecialchars($donnees['logo']); ?>">
+                                <img alt="Logo partenaire" src="img/<?php echo htmlspecialchars($donnees['logo']); ?>">
                                 
                                 <!-- Bloc contenant titre et description de chaque acteur -->
                                 <div class="actors-entry-description-container">

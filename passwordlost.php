@@ -4,8 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8"/>
-    	<title>Extranet GBAF</title>
+    	<title>Mot de passe perdu GBAF</title>
     	<link rel="stylesheet" href="style.css"/>
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width"/>
@@ -43,7 +42,7 @@ session_start();
 		                		<!-- Champ nouveau mot de passe -->
 								<label for="passwordlost-password">Nouveau mot de passe</label>
 								<br />
-								<input type="password" name="passwordlost-password" id="passwordlost-password" required size="30" minlenght="8" maxlenght="30" />
+								<input type="password" name="passwordlost-password" id="passwordlost-password" required size="30" maxlength="30" />
 								<br />
 								<p><span class="requirement-passwordlost-form">8 à 30 caractères (a-z, A-Z, 0-9, -, _, *, .)</span></p>
 								<br />
@@ -60,7 +59,7 @@ session_start();
 		                		<!-- Champ répétition nouveau mdp -->
 		                		<label for="passwordlost-password2">Répétition nouveau mot de passe</label>
 								<br />
-								<input type="password" name="passwordlost-password2" id="passwordlost-password2" required size="30" minlenght="8" maxlenght="30" />
+								<input type="password" name="passwordlost-password2" id="passwordlost-password2" required size="30" maxlength="30" />
 								<br />
 								<p><span class="requirement-passwordlost-form">8 à 30 caractères (a-z, A-Z, 0-9, -, _, *, .)</span></p>
 
@@ -81,7 +80,7 @@ session_start();
 								<!-- Champ nom d'utilisateur -->
 								<label for="passwordlost-username">Nom d'utilisateur</label>
 								<br />
-								<input type=text name="passwordlost-username" id="passwordlost-username" required size="30" maxlenght="30" />
+								<input type=text name="passwordlost-username" id="passwordlost-username" required size="30" maxlength="30" />
 								<br />
 
 								<!-- Message d'erreur nom d'utilisateur invalide -->
@@ -125,7 +124,7 @@ session_start();
 								<!-- Champ réponse secrète -->
 				                <label for="passwordlost-secretanswer">Réponse à votre question secrète</label>
 				                <br />
-				                <input type="text" name="passwordlost-secretanswer" id="passwordlost-secretanswer" required size="30" minlenght="2" maxlenght="20" />
+				                <input type="text" name="passwordlost-secretanswer" id="passwordlost-secretanswer" required size="30" maxlength="20" />
 				                <br />
 
 				                <!-- Message d'erreur réponse secrète invalide -->

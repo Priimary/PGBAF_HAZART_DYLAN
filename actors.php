@@ -10,8 +10,7 @@ if($_SESSION['loggedIn'] != true)
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8"/>
-    	<title>Extranet GBAF</title>
+    	<title>Partenaire GBAF</title>
     	<link rel="stylesheet" href="style.css"/>
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width"/>
@@ -56,7 +55,7 @@ if($_SESSION['loggedIn'] != true)
 			<article class="actor-content">
 
 				<!-- Logo acteur -->
-				<img src="img/<?php echo htmlspecialchars($donnees['logo']); ?>" alt="Image de présentation de l'acteur">
+				<img alt="Logo partenaire" src="img/<?php echo htmlspecialchars($donnees['logo']); ?>" alt="Image de présentation de l'acteur">
 				<br />
 
 				<!-- Titre acteur -->
@@ -104,7 +103,7 @@ if($_SESSION['loggedIn'] != true)
 				<form id="form-add-post" method="post" action="add_post.php?acteur=<?php echo $id_acteur; ?>">
 					<label for="commentaire">Commentaire</label>
 					<br />
-					<input type="text" name="commentaire" id="commentaire" required size="30" maxlenght="30"/>
+					<input type="text" name="commentaire" id="commentaire" required size="30" maxlength="30"/>
 					<input type="submit" value="Envoyer"/>
 				</form>
 

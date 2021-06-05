@@ -4,8 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8" />
-    	<title>Extranet GBAF</title>
+    	<title>Connexion GBAF</title>
     	<link rel="stylesheet" href="style.css" />
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width" />
@@ -48,11 +47,11 @@ session_start();
                 		<!-- Champs nom d'utilisateur et mdp -->
 						<label for="connexion-username">Nom d'utilisateur</label>
 						<br />
-						<input type="text" name="connexion-username" id="connexion-username" required size="33" maxlenght="30" />
+						<input type="text" name="connexion-username" id="connexion-username" required size="33" maxlength="30" />
 						<br />
 						<label for="connexion-password">Mot de passe</label>
 						<br />
-						<input type="password" name="connexion-password" id="connexion-password" required size="33" maxlenght="30" />
+						<input type="password" name="connexion-password" id="connexion-password" required size="33" maxlength="30" />
 						<br />
 
 						<!-- Bouton de connexion -->

@@ -4,8 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8"/>
-    	<title>Extranet GBAF</title>
+    	<title>Gestion de compte GBAF</title>
     	<link rel="stylesheet" href="style.css"/>
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width"/>
@@ -27,7 +26,7 @@ session_start();
 					<!-- Formulaire affichant nom et bouton formulaire nouveau nom -->
 					<form id="account-form-nom" method="post" action="account-script.php">
 						<p>Nom :<span class="account-info"><?php echo $_SESSION['nom']; ?></span></p>
-						<button name="nomBtn" type="submit" value="nom"><img src="img/pencil.png"></button>
+						<button name="nomBtn" type="submit" value="nom"><img alt="Crayon qui sert de bouton" src="img/pencil.png"></button>
 					</form>
 					<br />
 
@@ -51,7 +50,7 @@ session_start();
 							<!-- Champ nouveau nom -->
 							<label for="account-nom">Nouveau nom</label>
 							:
-							<input type=text name="account-nom" id="account-nom" required size="30" minlenght="2" maxlenght="20" />	
+							<input type=text name="account-nom" id="account-nom" required size="30" maxlength="20" />	
 							<p><span class="requirement-account-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
 							<!-- Message d'erreur si format invalide du nouveau nom -->
@@ -80,7 +79,7 @@ session_start();
 					<!-- Formulaire affichant prenom et bouton affichage formulaire nouveau prenom -->
 					<form id="account-form-prenom" method="post" action="account-script.php">
 						<p>Prenom :<span class="account-info"><?php echo $_SESSION['prenom']; ?></span></p>
-						<button name="prenomBtn" type="submit" value="prenom"><img src="img/pencil.png"></button>
+						<button name="prenomBtn" type="submit" value="prenom"><img alt="Crayon qui sert de bouton" src="img/pencil.png"></button>
 					</form>
 					<br />
 
@@ -104,7 +103,7 @@ session_start();
 							<!-- Champ nouveau prénom -->
 							<label for="account-prenom">Nouveau prénom</label>
 							:
-							<input type=text name="account-prenom" id="account-prenom" required size="30" minlenght="2" maxlenght="20" />
+							<input type=text name="account-prenom" id="account-prenom" required size="30" maxlength="20" />
 							<p><span class="requirement-account-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
 							<!-- Message d'erreur si format invalide nouveau prenom -->
@@ -133,7 +132,7 @@ session_start();
 					<!-- Formulaire affichage nom d'utilisateur et bouton formulaire changement nom d'utilisateur -->
 					<form id="account-form-username" method="post" action="account-script.php">
 						<p>Nom d'utilisateur :<span class="account-info"><?php echo $_SESSION['username']; ?></span></p>
-						<button name="usernameBtn" type="submit" value="username"><img src="img/pencil.png"></button>
+						<button name="usernameBtn" type="submit" value="username"><img alt="Crayon qui sert de bouton" src="img/pencil.png"></button>
 					</form>
 					<br />
 
@@ -157,7 +156,7 @@ session_start();
 							<!-- Champ nouveau nom d'utilisateur -->
 							<label for="account-username">Nouveau nom d'utilisateur</label>
 							:
-							<input type=text name="account-username" id="account-username" required size="30" minlenght="2" maxlenght="20" />
+							<input type=text name="account-username" id="account-username" required size="30" maxlength="20" />
 							<p><span class="requirement-account-form">5 à 20 caractères (a-z, A-Z, 0-9, - et _)</span></p>
 
 							<!-- Message d'erreur si format invalide nouveau nom d'utilisateur -->
@@ -186,7 +185,7 @@ session_start();
 					<!-- Formulaire affichant mot de passe et bouton formulaire changement de mot de passe -->
 					<form id="account-form-password" method="post" action="account-script.php">
 						<p>Mot de passe :<span class="account-info">********</span></p>
-						<button name="passwordBtn" type="submit" value="password"><img src="img/pencil.png"></button>
+						<button name="passwordBtn" type="submit" value="password"><img alt="Crayon qui sert de bouton" src="img/pencil.png"></button>
 					</form>
 					<br />
 
@@ -210,7 +209,7 @@ session_start();
 	                		<!-- Champ ancien mot de passe -->
 		                	<label for="account-password">Mot de passe actuel</label>
 		                	:
-		                	<input type="password" name="account-password" id="account-password" required size="30" minlenght="8" maxlenght="30" />
+		                	<input type="password" name="account-password" id="account-password" required size="30" maxlength="30" />
 							<br />
 		                	
 		                	<!-- Message d'erreur si ancien mdp invalide -->
@@ -225,7 +224,7 @@ session_start();
 		                	<!-- Champ nouveau mot de passe -->	
 							<label for="account-newpassword">Nouveau mot de passe</label>
 							:
-							<input type="password" name="account-newpassword" id="account-newpassword" required size="30" minlenght="8" maxlenght="30" />
+							<input type="password" name="account-newpassword" id="account-newpassword" required size="30" maxlength="30" />
 							<p><span class="requirement-account-form">8 à 30 caractères (a-z, A-Z, 0-9, -, _, *, .)</span></p>
 
 							<!-- Message d'erreur si format nouveau mdp invalide -->
@@ -240,7 +239,7 @@ session_start();
 							<!-- Champ répétation nouveau mot de passe -->
 		                	<label for="account-newpassword2">Répétition nouveau mot de passe</label>
 							:
-							<input type="password" name="account-newpassword2" id="account-newpassword2" required size="30" minlenght="8" maxlenght="30" />
+							<input type="password" name="account-newpassword2" id="account-newpassword2" required size="30" maxlength="30" />
 
 							<!-- Message d'erreur si les deux champs nouveau mdp ne sont pas identiques -->
 							<?php
@@ -268,7 +267,7 @@ session_start();
 					<!-- Formulaire affichage question secrète et bouton formulaire changement question secrète -->
 					<form id="account-form-secretquestion" method="post" action="account-script.php">
 						<p>Question secrète :<span class="account-info"><?php echo $_SESSION['question']; ?></span></p>
-						<button name="questionBtn" type="submit" value="question"><img src="img/pencil.png"></button>
+						<button name="questionBtn" type="submit" value="question"><img alt="Crayon qui sert de bouton" src="img/pencil.png"></button>
 					</form>
 					<br />
 
@@ -334,7 +333,7 @@ session_start();
 					<!-- Formulaire affichage reponse secrète et bouton formulaire changement reponse secrète -->
 					<form id="account-form-secretanswer" method="post" action="account-script.php">
 						<p>Réponse secrète :<span class="account-info">********</span></p>
-						<button name="answerBtn" type="submit" value="answer"><img src="img/pencil.png"></button>
+						<button name="answerBtn" type="submit" value="answer"><img alt="Crayon qui sert de bouton" src="img/pencil.png"></button>
 					</form>
 					<br />
 
@@ -358,7 +357,7 @@ session_start();
 							<!-- Champ réponse secrète actuelle -->
 							<label for="account-secretanswer">Réponse actuelle à la question secrète</label>
 							:
-							<input type="text" name="account-secretanswer" id="account-secretanswer" required size="30" minlenght="2" maxlenght="20" />
+							<input type="text" name="account-secretanswer" id="account-secretanswer" required size="30" maxlength="20" />
 							<br />
 							
 							<!-- Message d'erreur ancienne réponse invalide -->
@@ -373,7 +372,7 @@ session_start();
 							<!-- Champ nouvelle réponse secrète -->
 							<label for="account-newsecretanswer">Nouvelle réponse à la question secrète</label>
 							:
-							<input type="text" name="account-newsecretanswer" id="account-newsecretanswer" required size="30" minlenght="2" maxlenght="20" />
+							<input type="text" name="account-newsecretanswer" id="account-newsecretanswer" required size="30" maxlength="20" />
 							<br />
 
 							<!-- Message d'erreur mauvais format nouvelle réponse secrète -->

@@ -4,8 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8"/>
-    	<title>Extranet GBAF</title>
+    	<title>Inscription GBAF</title>
     	<link rel="stylesheet" href="style.css"/>
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width"/>
@@ -29,7 +28,7 @@ session_start();
 						<!-- Champ nom -->
 						<label for="register-nom">Votre nom</label>
 						<br />
-						<input type=text name="register-nom" id="register-nom" required size="30" minlenght="2" maxlenght="20" />
+						<input type=text name="register-nom" id="register-nom" required size="30" maxlength="20" />
 						<br />
 						<p><span class="requirement-register-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
@@ -45,7 +44,7 @@ session_start();
 						<!-- Champ prénom -->
 						<label for="register-prenom">Votre prénom</label>
 						<br />
-						<input type=text name="register-prenom" id="register-prenom" required size="30" minlenght="2" maxlenght="20" />
+						<input type=text name="register-prenom" id="register-prenom" required size="30" maxlength="20" />
 						<br />
 						<p><span class="requirement-register-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
@@ -61,7 +60,7 @@ session_start();
 	                	<!-- Champ nom d'utilisateur -->
 						<label for="register-username">Votre nom d'utilisateur</label>
 						<br />
-						<input type="text" name="register-username" id="register-username" required size="30" minlenght="5" maxlenght="20" />
+						<input type="text" name="register-username" id="register-username" required size="30" maxlength="20" />
 						<br />
 						<p><span class="requirement-register-form">5 à 20 caractères (a-z, A-Z, 0-9, - et _)</span></p>
 
@@ -82,7 +81,7 @@ session_start();
 	                	<!-- Champ mot de passe -->
 						<label for="register-password">Votre mot de passe</label>
 						<br />
-						<input type="password" name="register-password" id="register-password" required size="30" minlenght="8" maxlenght="30" />
+						<input type="password" name="register-password" id="register-password" required size="30" maxlength="30" />
 						<br />
 						<p><span class="requirement-register-form">8 à 30 caractères (a-z, A-Z, 0-9, -, _, *, .)</span></p>
 
@@ -127,7 +126,7 @@ session_start();
 						<!-- Champ réponse secrète -->
 		                <label for="register-secretanswer">Réponse à votre question secrète</label>
 		                <br />
-		                <input type="text" name="register-secretanswer" id="register-secretanswer" required size="30" minlenght="2" maxlenght="20" />
+		                <input type="text" name="register-secretanswer" id="register-secretanswer" required size="30" maxlength="20" />
 		                <br />
 		                <p><span class="requirement-register-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
