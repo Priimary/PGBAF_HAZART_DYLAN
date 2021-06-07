@@ -58,33 +58,25 @@ h3
 {
 	list-style-type: none;
 }
-.submenu
+.submenu li
 {
-	display: none;
-}
-.nav-menu-header li:hover .submenu
-{
-	display: block;
+	margin-top: 3px;
 }
 .submenu a
 {
-	padding: 26px;
+	padding-right: 10px;
 }
 #nomprenomheader
 {
 	border: 1px solid red;
 	border-radius: 20px;
-	position: relative;
 	padding-left: 5px;
 	padding-right: 5px;
-	top: 10px;
+	position: relative;
 	right: 5px;
+	font-size: 20px;
 	background-color: red;
-}
-#nomprenomheader::after
-{
-	content:" ▼";
-	font-size: 12px;
+	color:  black;
 }
 
 /* PIED DE PAGE */
@@ -514,13 +506,14 @@ h3
 	width: 25px;
 }
 
+
 /* PAGE GESTION DE COMPTE */
 #account-form-container
 {
 	width: 60%;
 	border-top: 2px solid rgba(255,0,0,0.7);
 	border-bottom: 2px solid rgba(255,0,0,0.7);
-	margin: 15px auto 15px auto;
+	margin: 45px auto 15px auto;
 	background-color: rgb(211,211,211);
 	padding-left: 15px;
 }
@@ -532,6 +525,11 @@ h3
 #account-form-nom, #account-form-prenom, #account-form-username, #account-form-password, #account-form-secretquestion, #account-form-secretanswer
 {
 	display: inline-flex;
+	border-top: 1px solid black;
+}
+#account-form-nom, #account-form-prenom, #account-form-username, #account-form-password, #account-form-secretquestion, #account-form-secretanswer p
+{
+	color: rgba(255,0,0,0.7);
 }
 #account-content img
 {
@@ -542,7 +540,7 @@ h3
 {
 	background-color: rgb(211,211,211);
 	border: none;
-	padding-left: 50px;
+	margin-left: 50px;
 }
 #account-content button:hover
 {
@@ -552,16 +550,31 @@ h3
 {
 	margin-left: 15px;
 	font-size: 16px;
+	color: black;
+}
+#account-password, #account-newpassword2, #account-secretquestion, #account-secretanswer
+{
+	margin-bottom: 10px;
 }
 .requirement-account-form
 {
 	font-size: 16px;
 	color: rgb(128,128,128);
 }
+.error-account
+{
+	color: rgba(255,0,0,0.7);
+	font-size: 16px;
+}
+.succes-account
+{
+	color: rgba(0,255,0,0.7);
+	font-size: 16px;
+}
 .validation-button
 {
 	height: 30px;
-	width: 10%;
+	width: 80px;
 	background-color: rgba(255,0,0,0.7);
 	border: 1px solid black;
 	color: white;
@@ -571,7 +584,191 @@ h3
 	margin-bottom: 20px;
 }
 
+/* RESPONSIVE TABLETTE */
+@media all and (max-device-width: 1024px)
+{
+	/* PAGE CONNEXION */
+	#connexion-form-container
+	{
+		width: 60% !important;
+	}
 
+	/* PAGE INSCRIPTION */
+	#register-form-container
+	{
+		width: 60% !important;
+	}
+
+	/* PAGE MDP PERDU */
+	#passwordlost-form-container
+	{
+		width: 60% !important;
+	}
+
+	/* INDEX */
+	#gbaf-section-content p
+	{
+		margin-left: 100px !important;
+		margin-right: 100px !important;
+	}
+	#actors-section-content p
+	{
+		margin-left: 100px !important;
+		margin-right: 100px !important;
+	}
+	#actors-list-container
+	{
+		width: 60% !important;
+	}
+	.actors-entry-content a
+	{
+		width: 25% !important;
+	}
+
+	/* PAGE ACTEUR */
+	#post-list-content h3
+	{
+		width: 60% !important;
+	}
+}
+
+/* RESPONSIVE MOBILE */
+@media all and (max-device-width: 480px)
+{
+	/* PAGE CONNEXION */
+	#connexion-form-container
+	{
+		width: 80% !important;
+	}
+	#connexion-form-container a
+	{
+		text-align:  center !important;
+	}
+
+	/* PAGE INSCRIPTION */
+	#register-form-container
+	{
+		width: 80% !important;
+	}
+	#register-form-container h1
+	{
+		font-size: 26px !important;
+	}
+	#register-form
+	{
+		width: 80% !important;
+	}
+
+	/* EN-TÊTE */
+	.logo-gbaf-connected-container
+	{
+		width: 30% !important;
+	}
+	.nav-menu-header-container
+	{
+		width: 70% !important;
+	}
+	#nomprenomheader
+	{
+		font-size: 18px !important;
+	}
+	.submenu a
+	{
+		font-size: 16px !important;
+	}
+
+	/* INDEX */
+	#gbaf-section-content h1
+	{
+		text-align: center !important;
+		font-size: 24px !important;
+	}
+	#gbaf-section-content p
+	{
+		margin-left: 20px !important;
+		margin-right: 20px !important;
+	}
+	#gbaf-section-content img
+	{
+		width: 80% !important;
+	}
+	#actors-section-content h2
+	{
+		text-align: center !important;
+		font-size: 24px !important;
+	}
+	#actors-section-content p
+	{
+		margin-left: 20px !important;
+		margin-right: 20px !important;
+	}
+	#actors-list-container
+	{
+		width: 70% !important;
+	}
+	.actors-entry-content
+	{
+		flex-direction: column !important;
+		align-items: center !important;
+		height: 155px !important;
+	}
+	.actors-entry-content img
+	{
+		width: 100% !important;
+		height: 65px !important;
+	}
+	.actors-entry-description-container
+	{
+		width: 100% !important;
+	}
+	.actors-entry-description-container h3
+	{
+		margin: 5px 0px 5px 0px !important;
+	}
+	.actors-entry-description-container p
+	{
+		margin: 0px !important;
+		font-size: 16px !important;
+	}
+	.actors-entry-content a
+	{
+		width: 100% !important;
+		position: static !important;
+	}
+
+	/* GESTION DE COMPTE */
+	#account-form-container
+	{
+		width: 80% !important;
+	}
+	#account-secretquestion
+	{
+		width: 80% !important;
+	}
+
+	/* PAGE ACTEUR */
+	.actor-section-container
+	{
+		width: 80% !important;
+	}
+	#post-list-content
+	{
+		width: 80% !important;
+	}
+	#post-list-content h3
+	{
+		font-size: 20px !important;
+	}
+	#post-list-content textarea
+	{
+		resize: none !important;
+		width: 90% !important;
+	}
+	.ActorPost
+	{
+		margin-top: 10px !important;
+	}
+}
 
 
 

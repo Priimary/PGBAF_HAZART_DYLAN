@@ -9,7 +9,7 @@ if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
 	<div class="nav-menu-header-container">
 		<nav class="nav-menu-header">
 			<ul>
-				<li class="dropdown"><a id="nomprenomheader"><?php echo $_SESSION['nom']," ", $_SESSION['prenom']; ?></a>
+				<li class="dropdown"><a href="#" id="nomprenomheader"><?php echo $_SESSION['nom']," ", $_SESSION['prenom']; ?></a>
 					<ul class="submenu">
 						<li><a href="account.php">Gestion du compte</a></li>
 						<li><a href="disconnect.php">Déconnexion</a></li>

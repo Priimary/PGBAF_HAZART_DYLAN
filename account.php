@@ -316,6 +316,7 @@ session_start();
 							}
 							?>
 
+							<br />
 							<!-- Bouton validation -->
 							<input class="validation-button" type="submit" value="Valider"/>
 
@@ -374,6 +375,7 @@ session_start();
 							:
 							<input type="text" name="account-newsecretanswer" id="account-newsecretanswer" required size="30" maxlength="20" />
 							<br />
+							<p><span class="requirement-account-form">2 à 20 caractères (a-z, A-Z, ' et -)</span></p>
 
 							<!-- Message d'erreur mauvais format nouvelle réponse secrète -->
 							<?php
