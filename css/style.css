@@ -1,8 +1,9 @@
 body
 {
-	margin: 0;
+	margin: 0px 0px 150px 0px;
 	padding: 0;
 	font: 18px "Comic Sans", sans-serif;
+
 }
 h1
 {
@@ -94,9 +95,12 @@ h3
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	height : 100px;
+	height: 100px;
+	width: 100%;
 	background-color: rgb(128,128,128);
 	border-top: 2px solid black;
+	position: fixed;
+	bottom: 0;
 }
 .nav-menu-footer ul li a
 {
@@ -425,7 +429,7 @@ h3
 }
 .error-passwordlost
 {
-	color: red;
+	color: rgba(255,0,0,0.7);
 	font-size: 14px;
 	margin-bottom: 20px;
 }
@@ -437,32 +441,94 @@ h3
 
 /* PAGE ACTEUR */
 /* section acteur */
-.actor-content
+.actor-section-container
 {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	text-align: center;
+	justify-content: center;
+	margin: 15px auto 0px auto;
+	width: 60%;
 }
 .actor-content h2
 {
+	font-size: 36px;
+	color: rgba(255,0,0,0.7);
 	margin: 5px 0px 0px 0px;
-}
-.actor-content p
-{
-	text-align: center;
+	text-transform: uppercase;
 }
 .actor-content img
 {
-	height: 150px;
+	height: 125px;
 	width: 300px;
+}
+#post-list-content
+{
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 10px;
+    width: 60%;
+    margin-left: auto;
+    margin-right:  auto;
+}
+#post-list-content h3
+{
+	display: inline-block;
+	margin: 0px;
+	margin-bottom: 20px;
+	width: 70%;
+}
+#form-add-post-button
+{
+	display: inline-block;	
+}
+#form-add-post
+{
+	margin-bottom: 10px;
+}
+#commentaire
+{
+	margin: 5px 0px 5px 0px;
+}
+#likesystem-container
+{
+	display: inline-block;	
+}
+.ActorPost
+{
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 5px;
+}
+.ActorPost p
+{
+	margin: 0px;
+}
+.NomDatePost
+{
+	text-decoration: underline;
 }
 #likesystem-container img
 {
-	height: 30px;
-	width: 30px;
+	height: 25px;
+	width: 25px;
 }
 
 /* PAGE GESTION DE COMPTE */
+#account-form-container
+{
+	width: 60%;
+	border-top: 2px solid rgba(255,0,0,0.7);
+	border-bottom: 2px solid rgba(255,0,0,0.7);
+	margin: 15px auto 15px auto;
+	background-color: rgb(211,211,211);
+	padding-left: 15px;
+}
+#account-form-container h1
+{
+	color: rgba(255,0,0,0.7);
+	margin: 5px 0px 0px 0px;
+}
 #account-form-nom, #account-form-prenom, #account-form-username, #account-form-password, #account-form-secretquestion, #account-form-secretanswer
 {
 	display: inline-flex;
@@ -470,16 +536,39 @@ h3
 #account-content img
 {
 	height: 20px;
-	width:  20px;
+	width: 20px;
 }
 #account-content button
 {
-	background-color: white;
+	background-color: rgb(211,211,211);
 	border: none;
+	padding-left: 50px;
+}
+#account-content button:hover
+{
+	background-color: rgb(128,128,128);
 }
 .account-info
 {
 	margin-left: 15px;
+	font-size: 16px;
+}
+.requirement-account-form
+{
+	font-size: 16px;
+	color: rgb(128,128,128);
+}
+.validation-button
+{
+	height: 30px;
+	width: 10%;
+	background-color: rgba(255,0,0,0.7);
+	border: 1px solid black;
+	color: white;
+	font-size: 16px;
+	font-stretch: expanded;
+	text-transform: uppercase;
+	margin-bottom: 20px;
 }
 
 

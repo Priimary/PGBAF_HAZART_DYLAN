@@ -17,6 +17,15 @@ include 'likefunction.php';
 $id_acteur = $_GET['acteur'];
 $errorPost = 'Veuillez écrire un commentaire professionnel et constructif.';
 $errorPosted = 'Vous avez déjà écrit un commentaire sur cette page.';
+$checkPost = 'addPost';
+
+// Vérifie si appuie sur bouton, si oui mise en variable session pour affichage nouveau commentaire
+if(isset($_POST['addPostBtn']) && $_POST['addPostBtn'] === $checkPost)
+{
+	$_SESSION['newComment'] = true;
+	header('Location: actors.php?acteur='.$id_acteur);
+	exit();
+}
 
 // Vérifie si champ rempli, puis sécurise le texte reçu, puis vérifie si bon format, puis insert dans la BDD
 if(isset($_POST['commentaire']) && ! userPosted($id_acteur))

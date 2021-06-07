@@ -249,7 +249,7 @@ session_start();
 								echo "<p><span class='error-account'>$errorAccountNewPassword2</span></p>";                    	
 							}
 							?>
-
+							<br/>
 							<!-- Bouton validation -->
 		                	<input class="validation-button" type="submit" value="Valider"/>
 

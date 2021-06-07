@@ -81,7 +81,6 @@ if($_SESSION['loggedIn'] != true)
 
 				<!-- Titre liste commentaires -->
 				<h3>Commentaires</h3>
-
 				<!-- Message d'erreur si commentaire vide -->
 				<?php
 				if(isset($_SESSION['errorPost']))
@@ -97,20 +96,30 @@ if($_SESSION['loggedIn'] != true)
 				?>
 
 				<!-- Bouton nouveau commentaire -->
-				<a href="#">Nouveau commentaire</a>
-
-				<!-- Formulaire nouveau commentaire caché de base, affiché sur appuie bouton -->
-				<form id="form-add-post" method="post" action="add_post.php?acteur=<?php echo $id_acteur; ?>">
-					<label for="commentaire">Commentaire</label>
-					<br />
-					<input type="text" name="commentaire" id="commentaire" required size="30" maxlength="30"/>
-					<input type="submit" value="Envoyer"/>
+				<form id="form-add-post-button" method="post" action="add_post.php?acteur=<?php echo $id_acteur;?>">
+					<button name="addPostBtn" type="submit" value="addPost">Nouveau commentaire</button>
 				</form>
 
 				<!-- Insertion système de vote -->
 				<div id="likesystem-container">
 					<?php include 'likesystem.php'; ?>
 				</div>
+
+				<!-- Formulaire nouveau commentaire caché de base, affiché sur appuie bouton -->
+				<?php
+				if(isset($_SESSION['newComment']))
+				{
+				?>
+				<form id="form-add-post" method="post" action="add_post.php?acteur=<?php echo $id_acteur; ?>">
+					<label for="commentaire">Nouveau commentaire</label>
+					<br />
+					<textarea row="10" cols="60" id="commentaire" name="commentaire" required></textarea>
+					<br />
+					<input type="submit" value="Envoyer"/>
+				</form>
+				<?php
+				}
+				?>
 
 				<?php
 				// Récupération des commentaires
@@ -121,8 +130,11 @@ if($_SESSION['loggedIn'] != true)
 				{
 				?>
 					<!-- Affichage de chaque commentaire disponible avec prénom, date, et post -->
-					<p><strong><?php echo htmlspecialchars($donnees['prénom']); ?></strong> le <?php echo $donnees['date_commentaire']; ?></p><br/>
-					<p><?php echo nl2br(htmlspecialchars($donnees['post'])); ?></p>
+					<div class="ActorPost">
+						<p><span class="NomDatePost"><strong><?php echo htmlspecialchars($donnees['prénom']); ?></strong> le <?php echo $donnees['date_commentaire']; ?></span></p>
+						<br/>
+						<p><?php echo nl2br(htmlspecialchars($donnees['post'])); ?></p>
+					</div>	
 				<?php
 				}
 				$req->closeCursor();
@@ -139,4 +151,5 @@ if($_SESSION['loggedIn'] != true)
 <?php
 unset($_SESSION['errorPost']);
 unset($_SESSION['errorPosted']);
+unset($_SESSION['newComment']);
 ?>
