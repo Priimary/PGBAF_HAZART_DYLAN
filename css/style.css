@@ -76,7 +76,7 @@ h3
 	right: 5px;
 	font-size: 20px;
 	background-color: red;
-	color:  black;
+	color: black;
 }
 
 /* PIED DE PAGE */
@@ -117,9 +117,10 @@ h3
 	align-items: center;
 	border-bottom: 2px solid black;
 }
-#gbaf-section-content h1
+#gbaf-section-container h1
 {
-	margin: 5px 0px 0px 0px;
+	margin: 5px auto 0px auto;
+	text-align: center;
 }
 #gbaf-section-content p
 {
@@ -135,9 +136,9 @@ h3
 	flex-direction: column;
 	align-items: center;
 }
-#actors-section-content h2
+#actors-section-container h2
 {
-	margin: 5px 0px 0px 0px;
+	margin: 5px auto 0px auto;
 }
 #actors-section-content p
 {
@@ -644,6 +645,10 @@ h3
 	{
 		text-align:  center !important;
 	}
+	#connexion-form
+	{
+		width: 80% !important;
+	}
 
 	/* PAGE INSCRIPTION */
 	#register-form-container
@@ -657,6 +662,29 @@ h3
 	#register-form
 	{
 		width: 80% !important;
+	}
+	#register-secretquestion
+	{
+		font-size: 11px !important;
+	}
+
+	/* PAGE MDP PERDU */
+	#passwordlost-form-container
+	{
+		width: 80% !important;
+	}
+	#passwordlost-form-container h1
+	{
+		font-size: 22px !important;
+		height: 70px !important;
+	}
+	#passwordlost-form
+	{
+		width: 80% !important;
+	}
+	#passwordlost-secretquestion
+	{
+		font-size: 11px !important;
 	}
 
 	/* EN-TÊTE */
