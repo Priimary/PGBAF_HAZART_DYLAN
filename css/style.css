@@ -110,27 +110,25 @@ h3
 
 /* INDEX */
 /* gbaf section */
-#gbaf-section-content
+#gbaf-section-container
 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border-bottom: 2px solid black;
 }
 #gbaf-section-container h1
 {
 	margin: 5px auto 0px auto;
-	text-align: center;
 }
-#gbaf-section-content p
+#gbaf-section-container p
 {
-	text-align: center;
+	text-align:  center;
 	margin-left: 60px;
 	margin-right: 60px;
 }
 
 /* acteurs section */
-#actors-section-content
+#actors-section-container
 {
 	display: flex;
 	flex-direction: column;
@@ -139,10 +137,6 @@ h3
 #actors-section-container h2
 {
 	margin: 5px auto 0px auto;
-}
-#actors-section-content p
-{
-	text-align: center;
 }
 #actors-list-container
 {
@@ -439,41 +433,46 @@ h3
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	justify-content: center;
 	margin: 15px auto 0px auto;
 	width: 60%;
 }
-.actor-content h2
+.actor-section-container h2
 {
 	font-size: 36px;
 	color: rgba(255,0,0,0.7);
 	margin: 5px 0px 0px 0px;
 	text-transform: uppercase;
 }
-.actor-content img
+.actor-section-container img
 {
 	height: 125px;
 	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
 }
-#post-list-content
+
+/* Section commentaires */
+#post-list-container
 {
+	display: flex;
+	flex-direction: column;
     border: 1px solid gray;
     border-radius: 15px;
     padding: 10px;
     width: 60%;
     margin-left: auto;
-    margin-right:  auto;
+    margin-right: auto;
 }
-#post-list-content h3
+#post-list-content-title
 {
-	display: inline-block;
+	display: flex;
+	flex-direction: row;
+}
+#post-list-content-title h3
+{
 	margin: 0px;
 	margin-bottom: 20px;
 	width: 70%;
-}
-#form-add-post-button
-{
-	display: inline-block;	
 }
 #form-add-post
 {
@@ -483,9 +482,10 @@ h3
 {
 	margin: 5px 0px 5px 0px;
 }
-#likesystem-container
+#likesystem-container img
 {
-	display: inline-block;	
+	height: 25px;
+	width: 25px;
 }
 .ActorPost
 {
@@ -493,7 +493,7 @@ h3
 	border-radius: 10px;
 	padding: 5px;
 }
-.ActorPost p
+.ActorPost p, h4
 {
 	margin: 0px;
 }
@@ -501,12 +501,11 @@ h3
 {
 	text-decoration: underline;
 }
-#likesystem-container img
+.errorpost
 {
-	height: 25px;
-	width: 25px;
+	color: rgba(255,0,0,0.7);
+	font-size: 16px;
 }
-
 
 /* PAGE GESTION DE COMPTE */
 #account-form-container
@@ -593,9 +592,17 @@ h3
 	{
 		width: 60% !important;
 	}
+	#connexion-form
+	{
+		width: 60% !important;
+	}
 
 	/* PAGE INSCRIPTION */
 	#register-form-container
+	{
+		width: 60% !important;
+	}
+	#register-form
 	{
 		width: 60% !important;
 	}
@@ -605,21 +612,31 @@ h3
 	{
 		width: 60% !important;
 	}
+	#passwordlost-form
+	{
+		width: 60% !important;
+	}
 
 	/* INDEX */
-	#gbaf-section-content p
+	#gbaf-section-container p
 	{
 		margin-left: 100px !important;
 		margin-right: 100px !important;
 	}
-	#actors-section-content p
+	#actors-section-container p
 	{
-		margin-left: 100px !important;
-		margin-right: 100px !important;
+		margin-left: 100px;
+		margin-right: 100px;
+		text-align: center;
 	}
 	#actors-list-container
 	{
-		width: 60% !important;
+		width: 70% !important;
+	}
+	.actors-entry-description-container p
+	{
+		margin: 0px !important;
+		text-align: left !important;
 	}
 	.actors-entry-content a
 	{
@@ -627,9 +644,22 @@ h3
 	}
 
 	/* PAGE ACTEUR */
-	#post-list-content h3
+	.actor-section-container
 	{
-		width: 60% !important;
+		width: 80% !important;
+	}
+	#post-list-container
+	{
+		width: 70% !important;
+	}
+	#post-list-container h3
+	{
+		width: 55% !important;
+	}
+	#post-list-container textarea
+	{
+		resize: none !important;
+		width: 90% !important;
 	}
 }
 
@@ -706,29 +736,30 @@ h3
 	}
 
 	/* INDEX */
-	#gbaf-section-content h1
+	#gbaf-section-container h1
 	{
 		text-align: center !important;
 		font-size: 24px !important;
 	}
-	#gbaf-section-content p
+	#gbaf-section-container p
 	{
 		margin-left: 20px !important;
 		margin-right: 20px !important;
 	}
-	#gbaf-section-content img
+	#gbaf-section-container img
 	{
 		width: 80% !important;
 	}
-	#actors-section-content h2
+	#actors-section-container h2
 	{
 		text-align: center !important;
 		font-size: 24px !important;
 	}
-	#actors-section-content p
+	#actors-section-container p
 	{
-		margin-left: 20px !important;
-		margin-right: 20px !important;
+		text-align: center;
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 	#actors-list-container
 	{
@@ -755,6 +786,7 @@ h3
 	}
 	.actors-entry-description-container p
 	{
+		text-align: left !important;
 		margin: 0px !important;
 		font-size: 16px !important;
 	}
@@ -777,20 +809,38 @@ h3
 	/* PAGE ACTEUR */
 	.actor-section-container
 	{
-		width: 80% !important;
+		width: 90% !important;
 	}
-	#post-list-content
+	#post-list-container
 	{
-		width: 80% !important;
+		width: 90% !important;
 	}
-	#post-list-content h3
+	#post-list-container h3
 	{
 		font-size: 20px !important;
+		width: 45% !important;
 	}
-	#post-list-content textarea
+	#form-add-post-button button
+	{
+		font-size: 12px !important;
+	}
+	#form-add-post-button
+	{
+		width: 30% !important;
+	}
+	#post-list-container textarea
 	{
 		resize: none !important;
 		width: 90% !important;
+	}
+	#likesystem-container
+	{
+		width: 25% !important;
+	}
+	#likesystem-container img
+	{
+		height: 20px;
+		width: 20px;
 	}
 	.ActorPost
 	{

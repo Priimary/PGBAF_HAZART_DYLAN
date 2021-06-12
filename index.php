@@ -26,34 +26,28 @@ if($_SESSION['loggedIn'] != true)
             <div id="index-content">
                 <!-- Section GBAF -->
                 <section id="gbaf-section-container">
-                    <!-- Article contenu gbaf -->
-        			<article id="gbaf-section-content">
-                        <!--Titre gbaf -->
-        				<h1>Qu'est ce que GBAF et ce site ?</h1>
-                        <!-- Description gbaf -->
-        				<p>
-        					Le Groupement Banque-Assurance Français (GBAF) est une fédération représentant les 6 grands groupes français.<br />
-        					Même s'il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même façon pour gérer près de 80 millions de comptes sur le territoire national.
-        					Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. C'est aussi un interlocuteur privilégié des pouvoirs publics.
-        				</p>
-                        <!-- Illustration gbaf -->
-        				<img src="img/illustration_gbaf.png" alt="logo des banques fondatrices gbaf">
-        			</article>
+                    <!--Titre gbaf -->
+                    <h1>Qu'est ce que GBAF et ce site ?</h1>
+                    <!-- Description gbaf -->
+        			<p>
+        				Le Groupement Banque-Assurance Français (GBAF) est une fédération représentant les 6 grands groupes français.<br />
+        				Même s'il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même façon pour gérer près de 80 millions de comptes sur le territoire national.
+        				Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. C'est aussi un interlocuteur privilégié des pouvoirs publics.
+        			</p>
+                    <!-- Illustration gbaf -->
+        			<img src="img/illustration_gbaf.png" alt="logo des banques fondatrices gbaf">
                 </section>
 
                 <!-- Section acteurs -->
                 <section id="actors-section-container">
-                    <!-- Article contenu acteur -->
-        			<article id="actors-section-content">
-                        <!-- Titre présentation acteur -->
-        				<h2>
-                            Présentation des acteurs et partenaires
-                        </h2>
-                        <!-- Paragraphe présentation acteurs -->
-        				<p>
-        					Plusieurs partenaires se sont engagés avec le GBAF pour proposer leurs services aux salariés, et ainsi augmenter leur confort.
-        				</p>
-                    </article>
+                    <!-- Titre présentation acteur -->
+                    <h2>Présentation des acteurs et partenaires</h2>
+                       
+                    <!-- Paragraphe présentation acteurs -->
+        			<p>
+        				Plusieurs partenaires se sont engagés avec le GBAF pour proposer leurs services aux salariés, et ainsi augmenter leur confort.
+        			</p>
+                    
                     <!-- Bloc conteneur liste des acteurs -->
                     <div id="actors-list-container">
         				<?php

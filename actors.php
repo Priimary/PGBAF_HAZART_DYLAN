@@ -51,24 +51,18 @@ if($_SESSION['loggedIn'] != true)
 
 		<!-- Section complète acteur -->
 		<section class="actor-section-container">
-			<!-- Article contenu acteur -->
-			<article class="actor-content">
+			<!-- Logo acteur -->
+			<img alt="Logo partenaire" src="img/<?php echo htmlspecialchars($donnees['logo']); ?>" alt="Image de présentation de l'acteur">
 
-				<!-- Logo acteur -->
-				<img alt="Logo partenaire" src="img/<?php echo htmlspecialchars($donnees['logo']); ?>" alt="Image de présentation de l'acteur">
-				<br />
+			<!-- Titre acteur -->
+			<h2>
+				<?php echo htmlspecialchars($donnees['acteur']); ?>
+			</h2>
 
-				<!-- Titre acteur -->
-				<h2>
-				    <?php echo htmlspecialchars($donnees['acteur']); ?>
-				</h2>
-
-			    <!-- Description acteur -->
-				<p>
-					<?php echo nl2br(htmlspecialchars($donnees['description'])); ?>
-				</p>
-
-			</article>
+			<!-- Description acteur -->
+			<p>
+				<?php echo nl2br(htmlspecialchars($donnees['description'])); ?>
+			</p>
 		</section>
 
 		<!-- Fin requête précédente -->
@@ -76,24 +70,9 @@ if($_SESSION['loggedIn'] != true)
 
 		<!-- Section complète commentaires -->
 		<section id="post-list-container">
-			<!-- Article contenu commentaires -->
-			<article id="post-list-content">
-
+			<div id="post-list-content-title">
 				<!-- Titre liste commentaires -->
 				<h3>Commentaires</h3>
-				<!-- Message d'erreur si commentaire vide -->
-				<?php
-				if(isset($_SESSION['errorPost']))
-				{
-					$errorPost = $_SESSION['errorPost'];
-					echo "<p><span class='errorpost'>$errorPost</span></p>";
-				}
-				elseif(isset($_SESSION['errorPosted']))
-				{
-					$errorPosted = $_SESSION['errorPosted'];
-					echo "<p><span class='errorpost'>$errorPosted</span></p>";
-				}
-				?>
 
 				<!-- Bouton nouveau commentaire -->
 				<form id="form-add-post-button" method="post" action="add_post.php?acteur=<?php echo $id_acteur;?>">
@@ -104,42 +83,56 @@ if($_SESSION['loggedIn'] != true)
 				<div id="likesystem-container">
 					<?php include 'likesystem.php'; ?>
 				</div>
+			</div>
 
-				<!-- Formulaire nouveau commentaire caché de base, affiché sur appuie bouton -->
-				<?php
-				if(isset($_SESSION['newComment']))
-				{
-				?>
-				<form id="form-add-post" method="post" action="add_post.php?acteur=<?php echo $id_acteur; ?>">
-					<label for="commentaire">Nouveau commentaire</label>
-					<br />
-					<textarea row="10" cols="60" id="commentaire" name="commentaire" required></textarea>
-					<br />
-					<input type="submit" value="Envoyer"/>
-				</form>
-				<?php
-				}
-				?>
+			<!-- Message d'erreur si commentaire vide -->
+			<?php
+			if(isset($_SESSION['errorPost']))
+			{
+				$errorPost = $_SESSION['errorPost'];
+				echo "<p><span class='errorpost'>$errorPost</span></p>";
+			}
+			elseif(isset($_SESSION['errorPosted']))
+			{
+				$errorPosted = $_SESSION['errorPosted'];
+				echo "<p><span class='errorpost'>$errorPosted</span></p>";
+			}
+			?>
 
-				<?php
-				// Récupération des commentaires
-				$req = $bdd->prepare('SELECT a.prenom prénom, p.post post, DATE_FORMAT(p.date_add, \'%d/%m/%Y à %Hh%imin%ss\') date_commentaire FROM post p INNER JOIN account a ON p.id_user = a.id_user  WHERE id_acteur = :id_acteur  ORDER BY date_add');
-				$req->execute(array(
-					'id_acteur' => $id_acteur));
-				while($donnees = $req->fetch())
-				{
-				?>
-					<!-- Affichage de chaque commentaire disponible avec prénom, date, et post -->
-					<div class="ActorPost">
-						<p><span class="NomDatePost"><strong><?php echo htmlspecialchars($donnees['prénom']); ?></strong> le <?php echo $donnees['date_commentaire']; ?></span></p>
-						<br/>
-						<p><?php echo nl2br(htmlspecialchars($donnees['post'])); ?></p>
-					</div>	
-				<?php
-				}
-				$req->closeCursor();
-				?>
-			</article>
+			<!-- Formulaire nouveau commentaire caché de base, affiché sur appuie bouton -->
+			<?php
+			if(isset($_SESSION['newComment']))
+			{
+			?>
+			<form id="form-add-post" method="post" action="add_post.php?acteur=<?php echo $id_acteur; ?>">
+				<label for="commentaire">Nouveau commentaire</label>
+				<br />
+				<textarea row="10" cols="60" id="commentaire" name="commentaire" required></textarea>
+				<br />
+				<input type="submit" value="Envoyer"/>
+			</form>
+			<?php
+			}
+			?>
+
+			<?php
+			// Récupération des commentaires
+			$req = $bdd->prepare('SELECT a.prenom prénom, p.post post, DATE_FORMAT(p.date_add, \'%d/%m/%Y à %Hh%imin%ss\') date_commentaire FROM post p INNER JOIN account a ON p.id_user = a.id_user  WHERE id_acteur = :id_acteur  ORDER BY date_add');
+			$req->execute(array(
+				'id_acteur' => $id_acteur));
+			while($donnees = $req->fetch())
+			{
+			?>
+				<!-- Affichage de chaque commentaire disponible avec prénom, date, et post -->
+				<article class="ActorPost">
+					<h4><span class="NomDatePost"><strong><?php echo htmlspecialchars($donnees['prénom']); ?></strong> le <?php echo $donnees['date_commentaire']; ?></span></h4>
+					<br/>
+					<p><?php echo nl2br(htmlspecialchars($donnees['post'])); ?></p>
+				</article>
+			<?php
+			}
+			$req->closeCursor();
+			?>
 		</section>
 
 		<!-- Insertion pied de page -->
