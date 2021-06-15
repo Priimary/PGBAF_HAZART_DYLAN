@@ -11,7 +11,7 @@ if($_SESSION['loggedIn'] != true)
 <html lang="fr">
     <head>
     	<title>Accueil GBAF</title>
-    	<link rel="stylesheet" href="style.css"/>
+    	<link rel="stylesheet" href="css/style.css"/>
         <link rel="icon" href="img/favicon.ico"/>
         <meta name="viewport" content="width=device-width"/>
     </head>

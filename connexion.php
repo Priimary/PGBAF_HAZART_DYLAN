@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
     <head>
     	<title>Connexion GBAF</title>
-    	<link rel="stylesheet" href="style.css" />
+    	<link rel="stylesheet" href="css/style.css" />
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width" />
     </head>
@@ -28,7 +28,7 @@ session_start();
 					if(isset($_SESSION['registerdone']))
 					{
 						$registerdone = $_SESSION['registerdone'];
-						echo "<p>$registerdone</p>";					
+						echo "<p><span id='registerSucces'>$registerdone</span></p>";					
 					}
 					?>
 

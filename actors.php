@@ -11,7 +11,7 @@ if($_SESSION['loggedIn'] != true)
 <html lang="fr">
     <head>
     	<title>Partenaire GBAF</title>
-    	<link rel="stylesheet" href="style.css"/>
+    	<link rel="stylesheet" href="css/style.css"/>
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width"/>
     </head>
@@ -72,7 +72,7 @@ if($_SESSION['loggedIn'] != true)
 		<section id="post-list-container">
 			<div id="post-list-content-title">
 				<!-- Titre liste commentaires -->
-				<h3>Commentaires</h3>
+				<h3>COMMENTAIRES</h3>
 
 				<!-- Bouton nouveau commentaire -->
 				<form id="form-add-post-button" method="post" action="add_post.php?acteur=<?php echo $id_acteur;?>">
@@ -105,7 +105,7 @@ if($_SESSION['loggedIn'] != true)
 			{
 			?>
 			<form id="form-add-post" method="post" action="add_post.php?acteur=<?php echo $id_acteur; ?>">
-				<label for="commentaire">Nouveau commentaire</label>
+				<label for="commentaire">Nouveau commentaire :</label>
 				<br />
 				<textarea row="10" cols="60" id="commentaire" name="commentaire" required></textarea>
 				<br />

@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
     <head>
     	<title>Gestion de compte GBAF</title>
-    	<link rel="stylesheet" href="style.css"/>
+    	<link rel="stylesheet" href="css/style.css"/>
     	<link rel="icon" href="img/favicon.ico"/>
     	<meta name="viewport" content="width=device-width"/>
     </head>
