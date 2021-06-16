@@ -1,9 +1,7 @@
 body
 {
 	margin: 0px 0px 150px 0px;
-	padding: 0;
 	font: 18px "Comic Sans", sans-serif;
-
 }
 h1
 {
@@ -170,7 +168,7 @@ h3
 }
 .actors-entry-description-container
 {
-	width: 65%;
+	width: 50%;
 	margin: 0px 5px 0px 5px;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -183,7 +181,7 @@ h3
 {
 	position: relative;
 	top: 92px;
-	width: 15%;
+	width: 20%;
 	font-size: 16px;
 	text-align: right;
 }
@@ -463,7 +461,7 @@ h3
 {
 	margin: 0px;
 	margin-bottom: 20px;
-	width: 70%;
+	width: 68%;
 }
 #form-add-post-button
 {
@@ -501,6 +499,11 @@ h3
 {
 	height: 25px;
 	width: 25px;
+}
+#likesystem-container button
+{
+	border: none;
+	background-color: rgb(128,128,128);
 }
 .ActorPost
 {
@@ -545,6 +548,10 @@ h3
 #account-form-nom, #account-form-prenom, #account-form-username, #account-form-password, #account-form-secretquestion, #account-form-secretanswer p
 {
 	color: rgba(255,0,0,0.7);
+}
+#account-nom, #account-prenom, #account-username, #account-password, #account-newpassword, #account-newpassword2, #account-secretquestion, #account-secretanswer, #account-newsecretanswer
+{
+	background-color: rgb(244,244,244);
 }
 #account-content img
 {
@@ -625,11 +632,11 @@ h3
 	/* PAGE MDP PERDU */
 	#passwordlost-form-container
 	{
-		width: 60% !important;
+		width: 70% !important;
 	}
 	#passwordlost-form
 	{
-		width: 60% !important;
+		width: 70% !important;
 	}
 
 	/* INDEX */
